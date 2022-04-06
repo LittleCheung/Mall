@@ -230,8 +230,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.yxj.gulimall</groupId>
-			<artifactId>gulimall-common</artifactId>
+			<groupId>com.mall</groupId>
+			<artifactId>mall-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

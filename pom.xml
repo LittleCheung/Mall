@@ -3,28 +3,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yxj.gulimall</groupId>
-    <artifactId>gulimall</artifactId>
+    <groupId>com.mall</groupId>
+    <artifactId>mall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gulimall</name>
-    <description>谷粒商城-聚合服务</description>
+    <name>mall</name>
+    <description>线上生鲜超市</description>
     <packaging>pom</packaging>
 
     <modules>
-        <module>gulimall-common</module>
-        <module>gulimall-coupon</module>
-        <module>gulimall-gateway</module>
-        <module>gulimall-member</module>
-        <module>gulimall-order</module>
-        <module>gulimall-product</module>
-        <module>gulimall-third-party</module>
-        <module>gulimall-ware</module>
-        <module>gulimall-search</module>
+        <module>mall-common</module>
+        <module>mall-coupon</module>
+        <module>mall-gateway</module>
+        <module>mall-member</module>
+        <module>mall-order</module>
+        <module>mall-product</module>
+        <module>mall-third-party</module>
+        <module>mall-ware</module>
+        <module>mall-search</module>
+        <module>mall-auth-server</module>
+        <module>mall-cart</module>
+        <module>mall-seckill</module>
         <module>renren-generator</module>
-        <module>gulimall-auth-server</module>
-        <module>gulimall-cart</module>
-        <module>gulimall-seckill</module>
     </modules>
-
 
 </project>
