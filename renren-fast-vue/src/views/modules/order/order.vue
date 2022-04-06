@@ -104,7 +104,7 @@
         prop="payType"
         header-align="center"
         align="center"
-        label="支付方式【1->支付宝；2->微信；3->银联； 4->货到付款；】">
+        label="支付方式【1->支付宝；2->微信；3->银联； 4->到款；】">
       </el-table-column>
       <el-table-column
         prop="sourceType"
