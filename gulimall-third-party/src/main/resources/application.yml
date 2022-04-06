@@ -1,0 +1,23 @@
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    alicloud:
+#      access-key: LTAI4GJvYzX1sXmLhdH7ydHW
+#      secret-key: gQiFRD3Y2EnWmjPkDUxqxHlTQzPE6Q
+#      oss:
+#        endpoint: oss-cn-shenzhen.aliyuncs.com
+#        bucket: gulimall-yaoxinjia
+#
+#      sms:
+#        host: http://dingxin.market.alicloudapi.com
+#        path: /dx/sendSms
+#        appCode: 60585ae5a76445b8badf93f727d36ec1
+#        tpl_id: TP1711063
+#  application:
+#    name: gulimall-third-party
+#server:
+#  port: 30000
+#
+#
