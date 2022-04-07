@@ -2,7 +2,7 @@ package com.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.ware.entity.PurchaseEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.ware.vo.MergeVo;
 import com.mall.ware.vo.PurchaseDoneVo;
 
@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface PurchaseService extends IService<PurchaseEntity> {
 

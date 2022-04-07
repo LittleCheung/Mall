@@ -2,7 +2,7 @@ package com.mall.cart.interceptor;
 
 
 import com.mall.cart.to.UserInfoTo;
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.vo.MemberRespVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,21 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
-import static com.yxj.gulimall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
-import static com.yxj.gulimall.common.constant.CartConstant.TEMP_USER_COOKIE_NAME;
-import static com.yxj.gulimall.common.constant.CartConstant.TEMP_USER_COOKIE_TIMEOUT;
+import static com.mall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
+import static com.mall.common.constant.CartConstant.TEMP_USER_COOKIE_NAME;
+import static com.mall.common.constant.CartConstant.TEMP_USER_COOKIE_TIMEOUT;
 
 
 /**
- *
- * @author yaoxinjia
+ * 购物车模块拦截器
+ * @author littlecheung
  */
 public class CartInterceptor implements HandlerInterceptor {
 
-
     public static ThreadLocal<UserInfoTo> toThreadLocal = new ThreadLocal<>();
 
-    /***
+    /**
      * 目标方法执行之前
      * @param request
      * @param response

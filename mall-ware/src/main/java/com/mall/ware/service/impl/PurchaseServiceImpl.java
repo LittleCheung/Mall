@@ -12,9 +12,9 @@ import com.mall.ware.service.WareSkuService;
 import com.mall.ware.vo.MergeVo;
 import com.mall.ware.vo.PurchaseDoneVo;
 import com.mall.ware.vo.PurchaseItemDoneVo;
-import com.yxj.gulimall.common.constant.WareConstant;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.constant.WareConstant;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Service("purchaseService")
 public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity> implements PurchaseService {

@@ -7,17 +7,24 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
- *
- * @author yaoxinjia
- */
-/**
- * 整合redis作为session存储
+ * 认证服务模块
+ * @author littlecheung
  */
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableRedisHttpSession
+
+public class AuthServerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AuthServerApplication.class,args);
+    }
+}
+
 /**
+ * 注意：整个redis作为session存储
+ *
  * spring-session核心原理
  * 1、EnableRedisHttpSession 导入RedisHttpSessionConfiguration配置
  *   1)给容器中添加了一个组件 SessionRepository ==》RedisOperationsSessionRepository/RedisIndexedSessionRepository ==？redis操作session ,实现session的增删改查
@@ -26,7 +33,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  *    2）原始的request,response被包装，SessionRepositoryRequestWrapper SessionRepositoryResponseWrapper
  *    3）以后获取session,request.getSession()
  *      获取的都是SessionRepositoryRequestWrapper
- *     4)wrapperRequest.getSession() ==> SessionRepository中获取的
+ *    4)wrapperRequest.getSession() ==> SessionRepository中获取的
  *
  *     这个实现是通过装饰器模式实现的 ，实现代码：
  *     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -43,9 +50,3 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  *     }
  *     自动延期：redis中的数据也是有过期时间的
  */
-public class AuthServerApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AuthServerApplication.class,args);
-    }
-}

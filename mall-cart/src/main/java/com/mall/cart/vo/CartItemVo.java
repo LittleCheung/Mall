@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- *
- * @author yaoxinjia
+ * 购物车商品实体类
+ * @author littlecheung
  */
 public class CartItemVo {
 

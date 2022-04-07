@@ -16,8 +16,8 @@ import java.util.concurrent.ExecutionException;
 
 
 /**
- *
- * @author yaoxinjia
+ * 处理购物车服务请求
+ * @author littlecheung
  */
 @Controller
 public class CartController {
@@ -39,33 +39,28 @@ public class CartController {
     }
 
     /**
-     * 去购物车页面的请求
-     * 浏览器有一个cookie:user-key 标识用户的身份，一个月过期
-     * 如果第一次使用jd的购物车功能，都会给一个临时的用户身份:
-     * 浏览器以后保存，每次访问都会带上这个cookie；
-     *
-     * 登录：session有
-     * 没登录：按照cookie里面带来user-key来做
-     * 第一次，如果没有临时用户，自动创建一个临时用户
-     *
+     * 跳转到购物车详情页
+     * @param model
      * @return
+     * @throws ExecutionException
+     * @throws InterruptedException
      */
     @GetMapping(value = "/cart.html")
     public String cartListPage(Model model) throws ExecutionException, InterruptedException {
-        //快速得到用户信息：id,user-key
-        // UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
 
         CartVo cartVo = cartService.getCart();
         model.addAttribute("cart",cartVo);
         return "cartList";
     }
 
-
     /**
      * 添加商品到购物车
-     * attributes.addFlashAttribute():将数据放在session中，可以在页面中取出，但是只能取一次
-     * attributes.addAttribute():将数据放在url后面
+     * @param skuId
+     * @param num
+     * @param attributes
      * @return
+     * @throws ExecutionException
+     * @throws InterruptedException
      */
     @GetMapping(value = "/addCartItem")
     public String addCartItem(@RequestParam("skuId") Long skuId,
@@ -74,8 +69,10 @@ public class CartController {
 
         cartService.addToCart(skuId,num);
 
+        // attributes.addAttribute():将数据放在url后面
+        // 另外还有attributes.addFlashAttribute():将数据放在session中，可以在页面中取出，但是只能取一次
         attributes.addAttribute("skuId",skuId);
-        return "redirect:http://cart.gulimall.com/addToCartSuccessPage.html";
+        return "redirect:http://cart.mall.com/addToCartSuccessPage.html";
     }
 
 
@@ -96,7 +93,7 @@ public class CartController {
 
 
     /**
-     * 商品是否选中
+     * 购物车中商品是否选中
      * @param skuId
      * @param checked
      * @return
@@ -107,7 +104,7 @@ public class CartController {
 
         cartService.checkItem(skuId,checked);
 
-        return "redirect:http://cart.gulimall.com/cart.html";
+        return "redirect:http://cart.mall.com/cart.html";
 
     }
 
@@ -124,12 +121,12 @@ public class CartController {
 
         cartService.changeItemCount(skuId,num);
 
-        return "redirect:http://cart.gulimall.com/cart.html";
+        return "redirect:http://cart.mall.com/cart.html";
     }
 
 
     /**
-     * 删除商品信息
+     * 删除购物车商品信息
      * @param skuId
      * @return
      */
@@ -139,7 +136,6 @@ public class CartController {
         cartService.deleteIdCartInfo(skuId);
 
         return "redirect:http://cart.gulimall.com/cart.html";
-
     }
 
 }

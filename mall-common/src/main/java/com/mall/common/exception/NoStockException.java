@@ -5,11 +5,12 @@ import lombok.Setter;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Getter
 @Setter
 public class NoStockException extends RuntimeException {
+
     private Long skuId;
 
     public NoStockException(Long skuId) {

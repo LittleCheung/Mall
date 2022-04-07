@@ -10,13 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Controller
 public class SearchController {
+
     @Autowired
     MallSearchService mallSearchService;
+
     @GetMapping("/list.html")
     public String listPage(SearchParam param, Model model, HttpServletRequest request) {
         param.set_queryString(request.getQueryString());

@@ -1,8 +1,8 @@
 package com.mall.common.exception;
 
 /**
- *
- * @author yaoxinjia
+ * 异常处理业务状态码枚举类
+ * @author littlecheung
  */
 public enum BizCodeEnum {
     UNKNOWN_EXCEPTION(10000,"系统未知错误"),

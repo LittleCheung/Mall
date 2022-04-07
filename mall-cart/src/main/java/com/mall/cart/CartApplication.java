@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- *
+ * 购物车服务启动类
  * @author littlecheung
  */
 @EnableFeignClients

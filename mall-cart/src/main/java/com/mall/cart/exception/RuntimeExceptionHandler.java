@@ -1,14 +1,14 @@
 package com.mall.cart.exception;
 
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
- *
- * @author yaoxinjia
+ * 运行时异常处理器类
+ * @author littlecheung
  */
 @ControllerAdvice
 public class RuntimeExceptionHandler {

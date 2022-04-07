@@ -4,17 +4,17 @@ package com.mall.auth.feign;
 import com.mall.auth.vo.UserLoginVo;
 import com.mall.auth.vo.SocialUser;
 import com.mall.auth.vo.UserRegisterVo;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
- * @author yaoxinjia
+ * 用户服务远程调用配置接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-member")
+@FeignClient("mall-member")
 public interface MemberFeignService {
 
     @PostMapping("/member/member/regist")

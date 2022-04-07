@@ -2,18 +2,18 @@ package com.mall.thirdparty;
 
 import com.aliyun.oss.OSSClient;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 @SpringBootTest
 class ThirdPartyApplicationTests {
-    @Autowired
-    OSSClient ossClient;
 
+    @Resource
+    OSSClient ossClient;
 
     @Test
     public void testUpload() throws FileNotFoundException {
@@ -27,10 +27,6 @@ class ThirdPartyApplicationTests {
 
         System.out.println("上传完成...");
 
-    }
-
-    @Test
-    void contextLoads() {
     }
 
 }

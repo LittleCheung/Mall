@@ -4,8 +4,8 @@ import lombok.Data;
 
 
 /**
- *
- * @author yaoxinjia
+ * 用户信息实体类
+ * @author littlecheung
  */
 @Data
 public class UserInfoTo {

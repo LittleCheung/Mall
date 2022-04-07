@@ -1,8 +1,6 @@
 /**
  * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
  * https://www.renren.io
- *
  * 版权所有，侵权必究！
  */
 
@@ -10,7 +8,7 @@ package com.mall.common.exception;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public class RRException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

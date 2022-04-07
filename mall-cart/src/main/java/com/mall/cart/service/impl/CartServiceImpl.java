@@ -10,7 +10,7 @@ import com.mall.cart.to.UserInfoTo;
 import com.mall.cart.vo.CartItemVo;
 import com.mall.cart.vo.CartVo;
 import com.mall.cart.vo.SkuInfoVo;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
-import static com.yxj.gulimall.common.constant.CartConstant.CART_PREFIX;
+import static com.mall.common.constant.CartConstant.CART_PREFIX;
 
 
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Slf4j
 @Service("cartService")
@@ -47,9 +47,16 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private ThreadPoolExecutor executor;
 
+    /**
+     * 添加商品到购物车
+     * @param skuId
+     * @param num
+     * @return
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     @Override
     public CartItemVo addToCart(Long skuId, Integer num) throws ExecutionException, InterruptedException {
-
         //拿到要操作的购物车信息
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
 
@@ -99,9 +106,14 @@ public class CartServiceImpl implements CartService {
         }
     }
 
+    /**
+     * 获取要操作的购物车信息
+     * @param skuId
+     * @return
+     */
     @Override
     public CartItemVo getCartItem(Long skuId) {
-        //拿到要操作的购物车信息
+
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
 
         String redisValue = (String) cartOps.get(skuId.toString());
@@ -198,12 +210,20 @@ public class CartServiceImpl implements CartService {
 
     }
 
-
+    /**
+     * 清除购物车信息
+     * @param cartKey
+     */
     @Override
     public void clearCartInfo(String cartKey) {
         redisTemplate.delete(cartKey);
     }
 
+    /**
+     * 清除购物车中数据
+     * @param skuId
+     * @param check
+     */
     @Override
     public void checkItem(Long skuId, Integer check) {
 
@@ -250,6 +270,10 @@ public class CartServiceImpl implements CartService {
         cartOps.delete(skuId.toString());
     }
 
+    /**
+     * 获取用户购物车数据
+     * @return
+     */
     @Override
     public List<CartItemVo> getUserCartItems() {
 
@@ -278,7 +302,6 @@ public class CartServiceImpl implements CartService {
                     })
                     .collect(Collectors.toList());
         }
-
         return cartItemVoList;
     }
 }

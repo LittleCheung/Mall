@@ -4,13 +4,13 @@ import com.alibaba.fastjson.TypeReference;
 import com.mall.product.service.*;
 import com.mall.product.vo.SkuItemVo;
 import com.mall.product.vo.SpuItemAttrGroupVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
+import com.mall.common.utils.R;
 import com.mall.product.entity.SkuImagesEntity;
 import com.mall.product.entity.SpuInfoDescEntity;
 import com.mall.product.feign.SeckillFeignService;
-import com.yxj.gulimall.product.service.*;
+import com.mall.product.service.*;
 import com.mall.product.vo.SeckillSkuVo;
 import com.mall.product.vo.SkuItemSaleAttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +40,16 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
     @Autowired
     private SkuImagesService imagesService;
+
     @Autowired
     private SpuInfoDescService spuInfoDescService;
+
     @Autowired
     private AttrGroupService attrGroupService;
+
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
+
     @Autowired
     private ThreadPoolExecutor executor;
 
@@ -177,10 +181,8 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
                 }
             }
         }, executor);
+
         //等待所有任务都完成
-
-
-
 
         try {
             CompletableFuture.allOf(saleAttrFuture,descFuture,attrGroupFuture,imgFuture).get();

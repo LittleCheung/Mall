@@ -1,8 +1,9 @@
 package com.mall.cart.exception;
 
 /**
- *
- * @author yaoxinjia
+ * 自定义购物车异常处理器类
+ * @author littlecheung
  */
 public class CartExceptionHandler extends RuntimeException {
+
 }

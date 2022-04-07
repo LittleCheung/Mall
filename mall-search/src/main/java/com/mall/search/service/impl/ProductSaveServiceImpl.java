@@ -1,11 +1,10 @@
 package com.mall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.mall.search.config.GulimallElasticSearchConfig;
+import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.yxj.gulimall.common.to.es.SkuEsModel;
 import com.mall.search.service.ProductSaveService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -42,7 +41,7 @@ public class ProductSaveServiceImpl implements ProductSaveService {
             indexRequest.source(s, XContentType.JSON);
             bulkRequest.add(indexRequest);
         }
-        BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+        BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, ElasticSearchConfig.COMMON_OPTIONS);
         // TODO 如果批量错误
         boolean b = bulk.hasFailures();
         List<String> collect = Arrays.stream(bulk.getItems()).map(item -> {

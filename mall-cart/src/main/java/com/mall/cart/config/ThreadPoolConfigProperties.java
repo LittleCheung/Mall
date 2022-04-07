@@ -4,10 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- *
- * @author yaoxinjia
+ * 线程池参数配置类
+ * @author littlecheung
  */
-@ConfigurationProperties(prefix = "gulimall.thread")
+@ConfigurationProperties(prefix = "mall.thread")
 @Data
 public class ThreadPoolConfigProperties {
 

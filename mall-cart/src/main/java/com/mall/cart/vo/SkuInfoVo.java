@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- *
- * @author yaoxinjia
+ * 库存量单位(sku)信息实体类
+ * @author littlecheung
  */
 @Data
 public class SkuInfoVo {

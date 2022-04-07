@@ -6,7 +6,7 @@
     <artifactId>mall-cart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mall-cart</name>
-    <description>购物车服务</description>
+    <description>购物车服务模块</description>
 
     <properties>
         <java.version>1.8</java.version>

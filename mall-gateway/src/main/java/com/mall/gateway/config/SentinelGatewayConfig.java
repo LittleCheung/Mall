@@ -4,8 +4,8 @@ package com.mall.gateway.config;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.BlockRequestHandler;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManager;
 import com.alibaba.fastjson.JSON;
-import com.yxj.gulimall.common.exception.BizCodeEnum;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.BizCodeEnum;
+import com.mall.common.utils.R;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebExchange;
@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Configuration
 public class SentinelGatewayConfig {

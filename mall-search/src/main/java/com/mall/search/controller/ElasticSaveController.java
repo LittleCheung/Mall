@@ -1,8 +1,8 @@
 package com.mall.search.controller;
 
-import com.yxj.gulimall.common.exception.BizCodeEnum;
-import com.yxj.gulimall.common.to.es.SkuEsModel;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.BizCodeEnum;
+import com.mall.common.to.es.SkuEsModel;
+import com.mall.common.utils.R;
 import com.mall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Slf4j
 @RequestMapping("/search/save")

@@ -2,7 +2,7 @@ package com.mall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.mall.search.config.GulimallElasticSearchConfig;
+import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.mall.search.vo.AttrResponseVo;
 import com.mall.search.vo.SearchParam;
@@ -12,7 +12,6 @@ import com.mall.search.feign.ProductFeignService;
 import com.mall.search.service.MallSearchService;
 import com.mall.search.vo.BrandVo;
 import com.mall.search.vo.SearchResult;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchRequest;
@@ -65,7 +64,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 
         try {
             //2、执行检索请求
-            SearchResponse response = client.search(searchRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+            SearchResponse response = client.search(searchRequest, ElasticSearchConfig.COMMON_OPTIONS);
             //3、分析响应数据封装成我们需要的格式
             result = buildSearchResult(response,param);
             System.out.println(result.toString());

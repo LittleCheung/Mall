@@ -4,8 +4,8 @@ import com.mall.ware.entity.PurchaseEntity;
 import com.mall.ware.service.PurchaseService;
 import com.mall.ware.vo.MergeVo;
 import com.mall.ware.vo.PurchaseDoneVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,8 @@ import java.util.Map;
 
 
 /**
- * @author yaoxinjia
+ * 采购单相关功能
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("ware/purchase")
@@ -56,7 +57,6 @@ public class PurchaseController {
      * @param mergeVo
      * @return
      */
-    ///ware/purchase/merge
     @PostMapping(value = "/merge")
     public R merge(@RequestBody MergeVo mergeVo) {
 
@@ -65,11 +65,11 @@ public class PurchaseController {
         return R.ok();
     }
 
-    ///ware/purchase/unreceive/list
+
     @GetMapping(value = "/unreceive/list")
     public R unreceiveList(@RequestParam Map<String, Object> params){
-        PageUtils page = purchaseService.queryPageUnreceive(params);
 
+        PageUtils page = purchaseService.queryPageUnreceive(params);
         return R.ok().put("page", page);
     }
 

@@ -1,14 +1,12 @@
 package com.mall.auth.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.mall.auth.feign.MemberFeignService;
 import com.mall.auth.vo.SocialUser;
-import com.yxj.gulimall.common.constant.AuthServerConstant;
-import com.yxj.gulimall.common.vo.MemberRespVo;
-import com.yxj.gulimall.common.utils.HttpUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.constant.AuthServerConstant;
+import com.mall.common.vo.MemberRespVo;
+import com.mall.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,20 +14,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpSession;
 
 /**
- * 处理社交登录请求
- * @author yaoxinjia
+ * 处理社交方式登录请求
+ * @author littlecheung
  */
 @Slf4j
 @Controller
@@ -37,13 +30,20 @@ public class Oauth2Controller {
     @Autowired
     private MemberFeignService memberFeignService;
 
+    /**
+     * 使用微博登录
+     * @param code 验证码
+     * @param session 利用session原理，将数据放在session中，只要跳到下一个页面取出这个数据以后，session里面的数据就会被删掉
+     * @return
+     * @throws Exception
+     */
     @GetMapping("/oauth2.0/weibo/success")
     public String weibo(@RequestParam("code") String code, HttpSession session) throws Exception {
         String url = "https://api.weibo.com/oauth2/access_token?client_id=1411893798&client_secret=6b03671f1d5bd30edcd63f029a38a428&grant_type=authorization_code&redirect_uri=http://auth.gulimall.com/oauth2.0/weibo/success&code=" +code;
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost httpPost = new HttpPost(url);
         HttpResponse response = httpClient.execute(httpPost);
-        //2、处理
+        //2、处理请求
         if (response.getStatusLine().getStatusCode()==200){
             //获取到accessToken
             String json = EntityUtils.toString(response.getEntity());
@@ -61,12 +61,12 @@ public class Oauth2Controller {
                 //TODO 2、使用json的序列化方式来序列化对象数据到redis中
                 session.setAttribute(AuthServerConstant.SESSION_LOGIN_KEY,memberRespVo);
                 //2、登录成功就跳回首页
-                return "redirect:http://gulimall.com";
+                return "redirect:http://mall.com";
             }else {
-                return "redirect:http://auth.gulimall.com/login.html";
+                return "redirect:http://auth.mall.com/login.html";
             }
         }else{
-            return "redirect:http://gulimall.com/login.html";
+            return "redirect:http://mall.com/login.html";
         }
 
     }

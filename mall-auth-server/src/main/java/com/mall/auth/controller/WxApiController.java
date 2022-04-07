@@ -5,8 +5,8 @@ import com.alibaba.fastjson.TypeReference;
 import com.mall.auth.feign.MemberFeignService;
 import com.mall.auth.utils.ConstantWxUtils;
 import com.mall.auth.utils.HttpClientUtils;
-import com.yxj.gulimall.common.utils.R;
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.utils.R;
+import com.mall.common.vo.MemberRespVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +17,12 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import static com.yxj.gulimall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
+import static com.mall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
 
 
 /**
- * @author yaoxinjia
+ * 处理微信方式登录请求
+ * @author littlecheung
  */
 @Slf4j
 @Controller
@@ -60,7 +61,6 @@ public class WxApiController {
                     ConstantWxUtils.WX_OPEN_APP_SECRET,
                     code
             );
-
             String accessTokenInfo = HttpClientUtils.get(accessTokenUrl);
             R r = memberFeignService.weixinLogin(accessTokenInfo);
             if (r.getCode() == 0) {
@@ -124,9 +124,7 @@ public class WxApiController {
                 redirect_url,
                 "xunqi"
         );
-
         //重定向到请求微信地址
         return "redirect:" + url;
     }
-
 }

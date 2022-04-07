@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- *
- * @author yaoxinjia
+ * 获取配置文件微信相关信息工具类
+ * @author littlecheung
  */
 @Component
 public class ConstantWxUtils implements InitializingBean {

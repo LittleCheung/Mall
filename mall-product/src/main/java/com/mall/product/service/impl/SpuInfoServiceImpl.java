@@ -8,17 +8,17 @@ import com.mall.product.feign.SearchFeignService;
 import com.mall.product.feign.WareFeignService;
 import com.mall.product.service.*;
 import com.mall.product.vo.*;
-import com.yxj.gulimall.common.constant.ProductConstant;
-import com.yxj.gulimall.common.to.SkuHasStockTo;
-import com.yxj.gulimall.common.to.SkuReductionTo;
-import com.yxj.gulimall.common.to.SpuBoundTo;
-import com.yxj.gulimall.common.to.es.SkuEsModel;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
-import com.yxj.gulimall.common.utils.R;
-import com.yxj.gulimall.product.entity.*;
-import com.yxj.gulimall.product.service.*;
-import com.yxj.gulimall.product.vo.*;
+import com.mall.common.constant.ProductConstant;
+import com.mall.common.to.SkuHasStockTo;
+import com.mall.common.to.SkuReductionTo;
+import com.mall.common.to.SpuBoundTo;
+import com.mall.common.to.es.SkuEsModel;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
+import com.mall.common.utils.R;
+import com.mall.product.entity.*;
+import com.mall.product.service.*;
+import com.mall.product.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,15 +35,18 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("spuInfoService")
 public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> implements SpuInfoService {
 
     @Autowired
     SpuInfoDescService spuInfoDescService;
+
     @Autowired
     SpuImagesService imagesService;
+
     @Autowired
     AttrService attrService;
 
@@ -52,6 +55,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Autowired
     SkuInfoService skuInfoService;
+
     @Autowired
     ProductAttrValueService attrValueService;
 
@@ -63,6 +67,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Autowired
     BrandService brandService;
+
     @Autowired
     CategoryService categoryService;
 
@@ -221,6 +226,10 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
+    /**
+     * 上传信息方法
+     * @param spuId
+     */
     @Override
     public void up(Long spuId) {
         // 1 查出当前spuid对应的所有sku信息，品牌的名字
