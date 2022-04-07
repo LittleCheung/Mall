@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface CartService {
 
