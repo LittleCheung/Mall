@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.mall.coupon.entity.SeckillPromotionEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +19,7 @@ import com.mall.coupon.service.SeckillPromotionService;
 
 /**
  * 秒杀活动
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("coupon/seckillpromotion")

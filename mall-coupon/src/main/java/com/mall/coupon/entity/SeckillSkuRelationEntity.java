@@ -10,10 +10,7 @@ import lombok.Data;
 
 /**
  * 秒杀活动商品关联
- * 
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 @Data
 @TableName("sms_seckill_sku_relation")

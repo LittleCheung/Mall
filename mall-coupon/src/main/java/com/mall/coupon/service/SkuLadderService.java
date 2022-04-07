@@ -1,17 +1,14 @@
 package com.mall.coupon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.coupon.entity.SkuLadderEntity;
 
 import java.util.Map;
 
 /**
  * 商品阶梯价格
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 public interface SkuLadderService extends IService<SkuLadderEntity> {
 

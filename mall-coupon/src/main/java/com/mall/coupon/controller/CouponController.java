@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.mall.coupon.entity.CouponEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,10 +20,7 @@ import com.mall.coupon.service.CouponService;
 
 /**
  * 优惠券信息
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("coupon/coupon")
@@ -37,8 +34,8 @@ public class CouponController {
      */
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = couponService.queryPage(params);
 
+        PageUtils page = couponService.queryPage(params);
         return R.ok().put("page", page);
     }
 

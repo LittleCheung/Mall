@@ -6,19 +6,16 @@ import java.util.Map;
 
 import com.mall.coupon.entity.SkuFullReductionEntity;
 import com.mall.coupon.service.SkuFullReductionService;
-import com.yxj.gulimall.common.to.SkuReductionTo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.to.SkuReductionTo;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 /**
  * 商品满减信息
- *
  * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
  */
 @RestController
 @RequestMapping("coupon/skufullreduction")

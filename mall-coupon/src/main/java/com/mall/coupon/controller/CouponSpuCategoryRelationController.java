@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.mall.coupon.entity.CouponSpuCategoryRelationEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,14 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mall.coupon.service.CouponSpuCategoryRelationService;
 
 
-
-
 /**
  * 优惠券分类关联
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("coupon/couponspucategoryrelation")
@@ -37,8 +32,8 @@ public class CouponSpuCategoryRelationController {
     @RequestMapping("/list")
    // @RequiresPermissions("coupon:couponspucategoryrelation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = couponSpuCategoryRelationService.queryPage(params);
 
+        PageUtils page = couponSpuCategoryRelationService.queryPage(params);
         return R.ok().put("page", page);
     }
 

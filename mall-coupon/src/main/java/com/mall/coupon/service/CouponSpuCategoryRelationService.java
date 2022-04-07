@@ -2,16 +2,13 @@ package com.mall.coupon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.coupon.entity.CouponSpuCategoryRelationEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 
 import java.util.Map;
 
 /**
  * 优惠券分类关联
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 public interface CouponSpuCategoryRelationService extends IService<CouponSpuCategoryRelationEntity> {
 

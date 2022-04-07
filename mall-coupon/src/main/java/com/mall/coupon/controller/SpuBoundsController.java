@@ -3,9 +3,9 @@ package com.mall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.mall.common.utils.PageUtils;
 import com.mall.coupon.service.SpuBoundsService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +14,7 @@ import com.mall.coupon.entity.SpuBoundsEntity;
 
 /**
  * 商品spu积分设置
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:18:04
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("coupon/spubounds")
@@ -31,8 +28,8 @@ public class SpuBoundsController {
     @RequestMapping("/list")
    // @RequiresPermissions("coupon:spubounds:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuBoundsService.queryPage(params);
 
+        PageUtils page = spuBoundsService.queryPage(params);
         return R.ok().put("page", page);
     }
 

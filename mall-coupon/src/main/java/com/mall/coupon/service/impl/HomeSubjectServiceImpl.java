@@ -2,8 +2,8 @@ package com.mall.coupon.service.impl;
 
 import com.mall.coupon.dao.HomeSubjectDao;
 import com.mall.coupon.entity.HomeSubjectEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
