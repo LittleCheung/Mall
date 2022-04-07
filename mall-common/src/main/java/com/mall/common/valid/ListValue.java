@@ -6,16 +6,14 @@ import java.lang.annotation.*;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Documented
-@Constraint(
-        validatedBy = {ListValueConstraintValidator.class}
-)
+@Constraint(validatedBy = {ListValueConstraintValidator.class})
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ListValue {
-    String message() default "{com.chenxin.gulimail.common.valid.ListValue.message}";
+    String message() default "{com.chenxin.mail.common.valid.ListValue.message}";
 
     Class<?>[] groups() default {};
 

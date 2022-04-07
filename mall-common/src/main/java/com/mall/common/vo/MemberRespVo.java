@@ -5,9 +5,10 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
- *
- * @author yaoxinjia
+ * 会员信息实体
+ * @author littlecheung
  */
 @ToString
 @Data

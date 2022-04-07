@@ -5,12 +5,15 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- *
- * @author yaoxinjia
+ * 会员等级实体
+ * @author littlecheung
  */
 @Data
 public class MemberPrice {
+
     private Long id;
+
     private String name;
+
     private BigDecimal price;
 }

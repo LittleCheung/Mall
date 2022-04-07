@@ -1,19 +1,11 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.mall.common.xss;
 
 import com.mall.common.exception.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**
- *
- * @author yaoxinjia
+ * SQL过滤器
+ * @author littlecheung
  */
 public class SQLFilter {
 

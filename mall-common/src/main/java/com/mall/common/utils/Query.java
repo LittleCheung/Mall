@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.mall.common.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -17,8 +9,8 @@ import org.apache.commons.lang.StringUtils;
 import java.util.Map;
 
 /**
- *
- * @author yaoxinjia
+ * 分页查询类
+ * @author littlecheung
  */
 public class Query<T> {
 
@@ -39,7 +31,7 @@ public class Query<T> {
         }
 
         //分页对象
-        Page<T> page = new Page<>(curPage, limit);
+        Page<T> page = new Page<T>(curPage, limit);
 
         //分页参数
         params.put(Constant.PAGE, page);

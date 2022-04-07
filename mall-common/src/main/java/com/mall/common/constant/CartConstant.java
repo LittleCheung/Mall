@@ -1,8 +1,8 @@
 package com.mall.common.constant;
 
 /**
- *
- * @author yaoxinjia
+ * 购物车常量类
+ * @author littlecheung
  */
 public class CartConstant {
 
@@ -10,7 +10,7 @@ public class CartConstant {
 
     public final static int TEMP_USER_COOKIE_TIMEOUT = 60*60*24*30;
 
-    public final static String CART_PREFIX = "gulimall:cart:";
+    public final static String CART_PREFIX = "mall:cart:";
 
 
 }

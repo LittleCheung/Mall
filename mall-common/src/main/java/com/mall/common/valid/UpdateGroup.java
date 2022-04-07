@@ -1,7 +1,8 @@
 package com.mall.common.valid;
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface UpdateGroup {
+
 }

@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- *
- * @author yaoxinjia
+ * 秒杀订单实体
+ * @author littlecheung
  */
 @Data
 public class SeckillOrderTo {

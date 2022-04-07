@@ -1,16 +1,8 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.mall.common.utils;
 
 /**
- *
- * @author yaoxinjia
+ * 常用常量集合类
+ * @author littlecheung
  */
 public class Constant {
 	/** 超级管理员ID */

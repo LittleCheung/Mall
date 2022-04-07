@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
+ * 无库存时执行异常处理类
  * @author littlecheung
  */
 @Getter

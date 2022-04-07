@@ -1,8 +1,8 @@
 package com.mall.common.constant;
 
 /**
- *
- * @author yaoxinjia
+ * 商品常量类
+ * @author littlecheung
  */
 public class ProductConstant {
     public enum AttrEnum{

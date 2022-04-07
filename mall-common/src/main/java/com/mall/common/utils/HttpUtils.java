@@ -31,8 +31,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @author yaoxinjia
+ * http操作工具类
+ * @author littlecheung
  */
 public class HttpUtils {
 
@@ -290,6 +290,7 @@ public class HttpUtils {
         try {
             SSLContext ctx = SSLContext.getInstance("TLS");
             X509TrustManager tm = new X509TrustManager() {
+
                 @Override
                 public X509Certificate[] getAcceptedIssuers() {
                     return null;

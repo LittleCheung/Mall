@@ -7,8 +7,8 @@ import java.util.Date;
 
 
 /**
- *
- * @author yaoxinjia
+ * 订单实体
+ * @author littlecheung
  */
 @Data
 public class OrderTo {

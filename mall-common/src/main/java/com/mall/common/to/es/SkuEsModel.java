@@ -4,8 +4,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 /**
- * Sku在Elasticsearch中保存的数据模型
+ * Sku在Elasticsearch中保存的数据实体
  * @author littlecheung
  */
 @Data

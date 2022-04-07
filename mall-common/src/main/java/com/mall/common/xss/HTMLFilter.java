@@ -8,8 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
- * @author yaoxinjia
+ * 网页消息过滤器
+ * @author littlecheung
  */
 public final class HTMLFilter {
 

@@ -3,8 +3,8 @@ package com.mall.common.to.mq;
 import lombok.Data;
 
 /**
- *
- * @author yaoxinjia
+ * 秒杀工作单实体
+ * @author littlecheung
  */
 @Data
 public class StockLockedTo {

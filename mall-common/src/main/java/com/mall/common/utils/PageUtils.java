@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
+ * 分页工具类
  * @author littlecheung
  */
 public class PageUtils implements Serializable {

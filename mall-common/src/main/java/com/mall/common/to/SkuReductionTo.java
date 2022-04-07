@@ -6,17 +6,25 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- *
- * @author yaoxinjia
+ * 库存量单位促销实体
+ * @author littlecheung
  */
 @Data
 public class SkuReductionTo {
+
     private Long skuId;
+
     private int fullCount;
+
     private BigDecimal discount;
+
     private int countStatus;
+
     private BigDecimal fullPrice;
+
     private BigDecimal reducePrice;
+
     private int priceStatus;
+
     private List<MemberPrice> memberPrice;
 }
