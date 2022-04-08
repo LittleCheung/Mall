@@ -1,17 +1,19 @@
 package com.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yxj.gulimall.common.to.OrderTo;
-import com.yxj.gulimall.common.to.mq.StockLockedTo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.to.OrderTo;
+import com.mall.common.to.mq.StockLockedTo;
+import com.mall.common.utils.PageUtils;
 import com.mall.ware.entity.WareSkuEntity;
 import com.mall.ware.vo.SkuHasStockVo;
 import com.mall.ware.vo.WareSkuLockVo;
 
 import java.util.List;
 import java.util.Map;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface WareSkuService extends IService<WareSkuEntity> {
 

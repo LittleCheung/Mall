@@ -1,13 +1,15 @@
 package com.mall.ware.feign;
-import com.yxj.gulimall.common.utils.R;
+
+import com.mall.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author yaoxinjia
+ * 会员模块远程服务调用接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-member")
+@FeignClient("mall-member")
 public interface MemberFeignService {
 
     /**

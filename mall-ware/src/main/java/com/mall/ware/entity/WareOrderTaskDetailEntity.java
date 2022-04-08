@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @NoArgsConstructor
 @AllArgsConstructor

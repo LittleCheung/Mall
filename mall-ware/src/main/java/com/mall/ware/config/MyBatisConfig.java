@@ -5,12 +5,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Configuration
-@EnableTransactionManagement        //开启事务
-@MapperScan("com.xunqi.gulimall.ware.dao")
+@EnableTransactionManagement
+@MapperScan("com.mall.ware.dao")
 public class MyBatisConfig {
 
     //引入分页插件

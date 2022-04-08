@@ -10,9 +10,7 @@ import java.util.List;
 /**
  * 商品库存
  *
- */
-/**
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface WareSkuDao extends BaseMapper<WareSkuEntity> {

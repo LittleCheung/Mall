@@ -5,8 +5,8 @@ import java.util.Map;
 
 import com.mall.ware.entity.WareOrderTaskEntity;
 import com.mall.ware.service.WareOrderTaskService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
-
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("ware/wareordertask")
 public class WareOrderTaskController {
+
     @Autowired
     private WareOrderTaskService wareOrderTaskService;
 

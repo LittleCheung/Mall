@@ -10,9 +10,9 @@ import com.mall.ware.feign.MemberFeignService;
 import com.mall.ware.service.WareInfoService;
 import com.mall.ware.vo.FareVo;
 import com.mall.ware.vo.MemberAddressVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
+import com.mall.common.utils.R;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("wareInfoService")
 public class WareInfoServiceImpl extends ServiceImpl<WareInfoDao, WareInfoEntity> implements WareInfoService {

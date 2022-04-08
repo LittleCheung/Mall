@@ -17,13 +17,13 @@ import com.mall.ware.vo.OrderItemVo;
 import com.mall.ware.vo.OrderVo;
 import com.mall.ware.vo.SkuHasStockVo;
 import com.mall.ware.vo.WareSkuLockVo;
-import com.yxj.gulimall.common.exception.NoStockException;
-import com.yxj.gulimall.common.to.OrderTo;
-import com.yxj.gulimall.common.to.mq.StockDetailTo;
-import com.yxj.gulimall.common.to.mq.StockLockedTo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.NoStockException;
+import com.mall.common.to.OrderTo;
+import com.mall.common.to.mq.StockDetailTo;
+import com.mall.common.to.mq.StockLockedTo;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
+import com.mall.common.utils.R;
 import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -39,7 +39,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @RabbitListener(queues = "stock.release.stock.queue")
 @Service("wareSkuService")

@@ -1,10 +1,9 @@
 package com.mall.ware.controller;
 
-
 import com.mall.ware.entity.PurchaseDetailEntity;
 import com.mall.ware.service.PurchaseDetailService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,8 @@ import java.util.Map;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("ware/purchasedetail")

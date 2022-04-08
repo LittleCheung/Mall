@@ -2,13 +2,14 @@ package com.mall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.ware.entity.WareInfoEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.ware.vo.FareVo;
 
 import java.util.Map;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface WareInfoService extends IService<WareInfoEntity> {
 

@@ -5,7 +5,9 @@ import com.mall.ware.entity.WareOrderTaskEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author yaoxinjia
+ * 仓库订单任务
+ *
+ * @author littlecheung
  */
 @Mapper
 public interface WareOrderTaskDao extends BaseMapper<WareOrderTaskEntity> {

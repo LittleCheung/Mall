@@ -1,9 +1,9 @@
 package com.mall.ware.controller;
 
 import com.mall.ware.service.WareSkuService;
-import com.yxj.gulimall.common.exception.NoStockException;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.NoStockException;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.ware.entity.WareSkuEntity;
 import com.mall.ware.vo.SkuHasStockVo;
 import com.mall.ware.vo.WareSkuLockVo;
@@ -14,15 +14,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static com.yxj.gulimall.common.exception.BizCodeEnum.NO_STOCK_EXCEPTION;
+import static com.mall.common.exception.BizCodeEnum.NO_STOCK_EXCEPTION;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("ware/waresku")
 public class WareSkuController {
+
     @Autowired
     private WareSkuService wareSkuService;
 

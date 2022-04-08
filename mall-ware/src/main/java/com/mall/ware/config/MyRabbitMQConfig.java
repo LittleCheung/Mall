@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Configuration
 public class MyRabbitMQConfig {
@@ -27,9 +28,7 @@ public class MyRabbitMQConfig {
     }
 
     // @RabbitListener(queues = "stock.release.stock.queue")
-    // public void handle(Message message) {
-    //
-    // }
+    // public void handle(Message message) { }
 
     /**
      * 库存服务默认的交换机

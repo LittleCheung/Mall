@@ -2,8 +2,8 @@ package com.mall.ware.service.impl;
 
 import com.mall.ware.entity.WareOrderTaskDetailEntity;
 import com.mall.ware.service.WareOrderTaskDetailService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.ware.dao.WareOrderTaskDetailDao;
 import org.springframework.stereotype.Service;
 import java.util.Map;
@@ -12,7 +12,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("wareOrderTaskDetailService")
 public class WareOrderTaskDetailServiceImpl extends ServiceImpl<WareOrderTaskDetailDao, WareOrderTaskDetailEntity> implements WareOrderTaskDetailService {

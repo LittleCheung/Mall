@@ -7,9 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 仓库信息
  *
- */
-/**
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface WareInfoDao extends BaseMapper<WareInfoEntity> {

@@ -6,14 +6,15 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mall.ware.dao.WareOrderTaskDao;
 import com.mall.ware.entity.WareOrderTaskEntity;
 import com.mall.ware.service.WareOrderTaskService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("wareOrderTaskService")
 public class WareOrderTaskServiceImpl extends ServiceImpl<WareOrderTaskDao, WareOrderTaskEntity> implements WareOrderTaskService {

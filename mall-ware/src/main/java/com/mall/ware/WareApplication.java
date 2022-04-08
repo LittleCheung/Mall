@@ -10,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
+ * 仓储服务模块启动类
  * @author littlecheung
  */
 @EnableRabbit

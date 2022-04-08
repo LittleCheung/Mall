@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mall.ware.dao.PurchaseDetailDao;
 import com.mall.ware.entity.PurchaseDetailEntity;
 import com.mall.ware.service.PurchaseDetailService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("purchaseDetailService")
 public class PurchaseDetailServiceImpl extends ServiceImpl<PurchaseDetailDao, PurchaseDetailEntity> implements PurchaseDetailService {

@@ -8,7 +8,8 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 @TableName("wms_ware_sku")
