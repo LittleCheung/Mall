@@ -1,8 +1,8 @@
 package com.mall.order.enume;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 订单状态枚举类
+ * @author littlecheung
  */
 public enum OrderStatusEnum {
     CREATE_NEW(0,"待付款"),

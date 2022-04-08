@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Configuration
-public class GuliFeignConfig {
+public class FeignConfig {
 
     @Bean("requestInterceptor")
     public RequestInterceptor requestInterceptor() {

@@ -1,6 +1,6 @@
 package com.mall.order.web;
 
-import com.yxj.gulimall.common.exception.NoStockException;
+import com.mall.common.exception.NoStockException;
 import com.mall.order.service.OrderService;
 import com.mall.order.vo.OrderConfirmVo;
 import com.mall.order.vo.OrderSubmitVo;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Controller
 public class OrderWebController {

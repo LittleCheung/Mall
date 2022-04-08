@@ -10,10 +10,7 @@ import lombok.Data;
 
 /**
  * 退款信息
- * 
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 21:17:10
+ * @author littlecheung
  */
 @Data
 @TableName("oms_refund_info")

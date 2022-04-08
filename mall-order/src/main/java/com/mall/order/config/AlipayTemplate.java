@@ -8,9 +8,10 @@ import com.mall.order.vo.PayVo;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 支付宝支付配置类
+ * @author littlecheung
  */
 @ConfigurationProperties(prefix = "alipay")
 @Component

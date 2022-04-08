@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Data
 public class SpuInfoVo {

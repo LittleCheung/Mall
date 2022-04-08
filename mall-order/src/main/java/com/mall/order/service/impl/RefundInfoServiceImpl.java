@@ -1,8 +1,8 @@
 package com.mall.order.service.impl;
 
 import com.mall.order.dao.RefundInfoDao;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.order.entity.RefundInfoEntity;
 import com.mall.order.service.RefundInfoService;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Service("refundInfoService")
 public class RefundInfoServiceImpl extends ServiceImpl<RefundInfoDao, RefundInfoEntity> implements RefundInfoService {

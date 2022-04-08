@@ -10,7 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+
 /**
+ * 订单服务模块启动类
  * @author littlecheung
  */
 @EnableAspectJAutoProxy(exposeProxy = true)

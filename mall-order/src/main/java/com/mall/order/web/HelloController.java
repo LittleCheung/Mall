@@ -13,8 +13,8 @@ import java.util.UUID;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Controller
 public class HelloController {

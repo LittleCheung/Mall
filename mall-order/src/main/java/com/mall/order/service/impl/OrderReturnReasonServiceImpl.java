@@ -1,8 +1,8 @@
 package com.mall.order.service.impl;
 
 import com.mall.order.dao.OrderReturnReasonDao;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.order.entity.OrderReturnReasonEntity;
 import com.mall.order.service.OrderReturnReasonService;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Service("orderReturnReasonService")
 public class OrderReturnReasonServiceImpl extends ServiceImpl<OrderReturnReasonDao, OrderReturnReasonEntity> implements OrderReturnReasonService {
@@ -24,8 +24,6 @@ public class OrderReturnReasonServiceImpl extends ServiceImpl<OrderReturnReasonD
                 new Query<OrderReturnReasonEntity>().getPage(params),
                 new QueryWrapper<OrderReturnReasonEntity>()
         );
-
         return new PageUtils(page);
     }
-
 }

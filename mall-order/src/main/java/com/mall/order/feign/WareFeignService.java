@@ -1,6 +1,6 @@
 package com.mall.order.feign;
 
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import com.mall.order.vo.WareSkuLockVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+
+
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 仓储模块远程调用代码
+ * @author littlecheung
  */
-@FeignClient("gulimall-ware")
-public interface WmsFeignService {
+@FeignClient("mall-ware")
+public interface WareFeignService {
 
     /**
      * 查询sku是否有库存

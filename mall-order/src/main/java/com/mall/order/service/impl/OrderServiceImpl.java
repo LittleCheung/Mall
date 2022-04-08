@@ -11,18 +11,18 @@ import com.mall.order.constant.OrderConstant;
 import com.mall.order.constant.PayConstant;
 import com.mall.order.dao.OrderDao;
 import com.mall.order.enume.OrderStatusEnum;
-import com.mall.order.feign.WmsFeignService;
+import com.mall.order.feign.WareFeignService;
 import com.mall.order.interceptor.LoginUserInterceptor;
 import com.mall.order.service.PaymentInfoService;
 import com.mall.order.to.SpuInfoVo;
 import com.mall.order.vo.*;
-import com.yxj.gulimall.common.exception.NoStockException;
-import com.yxj.gulimall.common.to.OrderTo;
-import com.yxj.gulimall.common.to.mq.SeckillOrderTo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
-import com.yxj.gulimall.common.utils.R;
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.exception.NoStockException;
+import com.mall.common.to.OrderTo;
+import com.mall.common.to.mq.SeckillOrderTo;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
+import com.mall.common.utils.R;
+import com.mall.common.vo.MemberRespVo;
 import com.mall.order.entity.OrderEntity;
 import com.mall.order.entity.OrderItemEntity;
 import com.mall.order.entity.PaymentInfoEntity;
@@ -32,7 +32,6 @@ import com.mall.order.feign.ProductFeignService;
 import com.mall.order.service.OrderItemService;
 import com.mall.order.service.OrderService;
 import com.mall.order.to.OrderCreateTo;
-import com.yxj.gulimall.order.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
@@ -53,11 +52,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static com.yxj.gulimall.common.constant.CartConstant.CART_PREFIX;
+import static com.mall.common.constant.CartConstant.CART_PREFIX;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Slf4j
 @Service("orderService")
@@ -72,7 +71,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     private CartFeignService cartFeignService;
 
     @Autowired
-    private WmsFeignService wmsFeignService;
+    private WareFeignService wareFeignService;
 
     @Autowired
     private ProductFeignService productFeignService;
@@ -150,7 +149,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                     .collect(Collectors.toList());
 
             //远程查询商品库存信息
-            R skuHasStock = wmsFeignService.getSkuHasStock(skuIds);
+            R skuHasStock = wareFeignService.getSkuHasStock(skuIds);
             List<SkuStockVo> skuStockVos = skuHasStock.getData("data", new TypeReference<List<SkuStockVo>>() {});
 
             if (skuStockVos != null && skuStockVos.size() > 0) {
@@ -244,7 +243,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
                 //TODO 调用远程锁定库存的方法
                 //出现的问题：扣减库存成功了，但是由于网络原因超时，出现异常，导致订单事务回滚，库存事务不回滚(解决方案：seata)
                 //为了保证高并发，不推荐使用seata，因为是加锁，并行化，提升不了效率,可以发消息给库存服务
-                R r = wmsFeignService.orderLockStock(lockVo);
+                R r = wareFeignService.orderLockStock(lockVo);
                 if (r.getCode() == 0) {
                     //锁定成功
                     responseVo.setOrder(order.getOrder());
@@ -482,7 +481,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         OrderSubmitVo orderSubmitVo = confirmVoThreadLocal.get();
 
         //远程获取收货地址和运费信息
-        R fareAddressVo = wmsFeignService.getFare(orderSubmitVo.getAddrId());
+        R fareAddressVo = wareFeignService.getFare(orderSubmitVo.getAddrId());
         FareVo fareResp = fareAddressVo.getData("data", new TypeReference<FareVo>() {});
 
         //获取到运费信息

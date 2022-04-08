@@ -5,10 +5,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
-@ConfigurationProperties(prefix = "gulimall.thread")
+@ConfigurationProperties(prefix = "mall.thread")
 @Data
 public class ThreadPoolConfigProperties {
 

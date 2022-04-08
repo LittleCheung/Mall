@@ -4,37 +4,61 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.util.Date;
+
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @ToString
 @Data
 public class PayAsyncVo {
 
     private String gmt_create;
+
     private String charset;
+
     private String gmt_payment;
+
     private Date notify_time;
+
     private String subject;
+
     private String sign;
-    private String buyer_id;//支付者的id
-    private String body;//订单的信息
-    private String invoice_amount;//支付金额
+    //支付者的id
+    private String buyer_id;
+    //订单的信息
+    private String body;
+    //支付金额
+    private String invoice_amount;
+
     private String version;
-    private String notify_id;//通知id
+    //通知id
+    private String notify_id;
+
     private String fund_bill_list;
-    private String notify_type;//通知类型； trade_status_sync
-    private String out_trade_no;//订单号
-    private String total_amount;//支付的总额
-    private String trade_status;//交易状态  TRADE_SUCCESS
-    private String trade_no;//流水号
-    private String auth_app_id;//
-    private String receipt_amount;//商家收到的款
-    private String point_amount;//
-    private String app_id;//应用id
-    private String buyer_pay_amount;//最终支付的金额
-    private String sign_type;//签名类型
-    private String seller_id;//商家的id
+    //通知类型； trade_status_sync
+    private String notify_type;
+    //订单号
+    private String out_trade_no;
+    //支付的总额
+    private String total_amount;
+    //交易状态  TRADE_SUCCESS
+    private String trade_status;
+    //流水号
+    private String trade_no;
+
+    private String auth_app_id;
+    //商家收到的款
+    private String receipt_amount;
+
+    private String point_amount;
+    //应用id
+    private String app_id;
+    //最终支付的金额
+    private String buyer_pay_amount;
+    //签名类型
+    private String sign_type;
+    //商家的id
+    private String seller_id;
 
 }

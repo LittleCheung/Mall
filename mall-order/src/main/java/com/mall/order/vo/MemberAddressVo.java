@@ -3,8 +3,8 @@ package com.mall.order.vo;
 import lombok.Data;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 会员收货地址实体
+ * @author littlecheung
  */
 @Data
 public class MemberAddressVo {

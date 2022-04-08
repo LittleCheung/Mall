@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 第三方服务模块远程调用接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-third-party")
+@FeignClient("mall-third-party")
 public interface ThridFeignService {
 
     @GetMapping(value = "/pay",consumes = "application/json")

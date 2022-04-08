@@ -4,8 +4,8 @@ import com.alibaba.csp.sentinel.adapter.servlet.callback.UrlBlockHandler;
 import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.fastjson.JSON;
-import com.yxj.gulimall.common.exception.BizCodeEnum;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.BizCodeEnum;
+import com.mall.common.utils.R;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +14,13 @@ import java.io.IOException;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Configuration
-public class GulimallOrderSentinelConfig {
+public class OrderSentinelConfig {
 
-    public GulimallOrderSentinelConfig() {
+    public OrderSentinelConfig() {
 
         WebCallbackManager.setUrlBlockHandler(new UrlBlockHandler() {
             @Override

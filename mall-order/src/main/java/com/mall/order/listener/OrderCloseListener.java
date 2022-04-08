@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @RabbitListener(queues = "order.release.order.queue")
 @Service

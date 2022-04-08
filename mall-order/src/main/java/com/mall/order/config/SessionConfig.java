@@ -9,11 +9,11 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Configuration
-public class GulimallSessionConfig {
+public class SessionConfig {
 
     @Bean
     public CookieSerializer cookieSerializer() {
@@ -21,8 +21,8 @@ public class GulimallSessionConfig {
         DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
 
         //放大作用域
-        cookieSerializer.setDomainName("gulimall.com");
-        cookieSerializer.setCookieName("GULISESSION");
+        cookieSerializer.setDomainName("mall.com");
+        cookieSerializer.setCookieName("MALLSESSION");
 
         return cookieSerializer;
     }

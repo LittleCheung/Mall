@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Configuration
 public class MySeataConfig {

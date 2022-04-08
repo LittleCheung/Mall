@@ -2,17 +2,16 @@ package com.mall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.order.vo.*;
-import com.yxj.gulimall.common.to.mq.SeckillOrderTo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.to.mq.SeckillOrderTo;
+import com.mall.common.utils.PageUtils;
 import com.mall.order.entity.OrderEntity;
-import com.yxj.gulimall.order.vo.*;
 
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 public interface OrderService extends IService<OrderEntity> {
 

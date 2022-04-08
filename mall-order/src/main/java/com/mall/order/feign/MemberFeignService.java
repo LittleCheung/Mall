@@ -9,10 +9,10 @@ import java.util.List;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 会员模块远程调用接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-member")
+@FeignClient("mall-member")
 public interface MemberFeignService {
 
     /**

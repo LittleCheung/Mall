@@ -1,8 +1,8 @@
 package com.mall.order.constant;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 订单常量类
+ * @author littlecheung
  */
 public class OrderConstant {
 

@@ -1,7 +1,7 @@
 package com.mall.order.listener;
 
 import com.rabbitmq.client.Channel;
-import com.yxj.gulimall.common.to.mq.SeckillOrderTo;
+import com.mall.common.to.mq.SeckillOrderTo;
 import com.mall.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author littlecheung
  */
 @Slf4j
 @Component

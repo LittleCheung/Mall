@@ -8,10 +8,10 @@ import java.util.List;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 购物车模块远程调用接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-cart")
+@FeignClient("mall-cart")
 public interface CartFeignService {
 
     /**

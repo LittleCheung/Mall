@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * MyBatis配置文件
+ * @author littlecheung
  */
 @Configuration
 @EnableTransactionManagement        //开启使用
