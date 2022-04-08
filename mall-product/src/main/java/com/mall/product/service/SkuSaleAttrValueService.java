@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 import com.mall.product.entity.SkuSaleAttrValueEntity;
 import com.mall.product.vo.SkuItemSaleAttrVo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * sku销售属性&值
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface SkuSaleAttrValueService extends IService<SkuSaleAttrValueEntity> {
 

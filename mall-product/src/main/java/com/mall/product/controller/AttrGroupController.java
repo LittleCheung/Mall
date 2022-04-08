@@ -8,10 +8,10 @@ import com.mall.product.entity.AttrGroupEntity;
 import com.mall.product.service.AttrAttrgroupRelationService;
 import com.mall.product.service.AttrGroupService;
 import com.mall.product.service.AttrService;
-import com.mall.product.vo.AttrGroupRelatinVo;
+import com.mall.product.vo.AttrGroupRelationVo;
 import com.mall.product.vo.AttrGroupWithAttrsVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.product.entity.AttrEntity;
 import com.mall.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class AttrGroupController {
     private AttrService attrService;
 
     @PostMapping("/attr/relation")
-    public R addRelation(@RequestBody List<AttrGroupRelatinVo> vos) {
+    public R addRelation(@RequestBody List<AttrGroupRelationVo> vos) {
         relationService.saveBatch(vos);
         return R.ok();
     }
@@ -67,7 +67,7 @@ public class AttrGroupController {
     }
 
     @PostMapping("/attr/relation/delete")
-    public R deleteRelation(@RequestBody AttrGroupRelatinVo[] vos) {
+    public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos) {
         attrService.deleteRelation(vos);
         return R.ok();
     }

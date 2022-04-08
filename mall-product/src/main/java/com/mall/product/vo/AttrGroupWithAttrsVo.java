@@ -5,8 +5,10 @@ import com.mall.product.entity.AttrEntity;
 import lombok.Data;
 
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class AttrGroupWithAttrsVo {

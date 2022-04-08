@@ -2,8 +2,8 @@ package com.mall.product.service.impl;
 
 import com.mall.product.entity.SpuInfoDescEntity;
 import com.mall.product.service.SpuInfoDescService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -13,7 +13,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mall.product.dao.SpuInfoDescDao;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("spuInfoDescService")
 public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescDao, SpuInfoDescEntity> implements SpuInfoDescService {

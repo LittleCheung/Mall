@@ -9,8 +9,7 @@ import java.util.List;
 
 /**
  * 属性&属性分组关联
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface AttrAttrgroupRelationDao extends BaseMapper<AttrAttrgroupRelationEntity> {

@@ -1,8 +1,8 @@
 package com.mall.product.service.impl;
 
 import com.mall.product.entity.ProductAttrValueEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +18,8 @@ import com.mall.product.service.ProductAttrValueService;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("productAttrValueService")
 public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao, ProductAttrValueEntity> implements ProductAttrValueService {

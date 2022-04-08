@@ -10,8 +10,7 @@ import java.util.List;
 
 /**
  * sku销售属性&值
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface SkuSaleAttrValueDao extends BaseMapper<SkuSaleAttrValueEntity> {

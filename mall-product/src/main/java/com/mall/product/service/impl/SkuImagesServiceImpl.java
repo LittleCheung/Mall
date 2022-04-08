@@ -2,8 +2,8 @@ package com.mall.product.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mall.product.service.SkuImagesService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +16,8 @@ import com.mall.product.dao.SkuImagesDao;
 import com.mall.product.entity.SkuImagesEntity;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("skuImagesService")
 public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesDao, SkuImagesEntity> implements SkuImagesService {

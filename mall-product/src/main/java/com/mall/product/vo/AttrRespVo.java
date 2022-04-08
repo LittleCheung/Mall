@@ -1,14 +1,15 @@
 package com.mall.product.vo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+
 /**
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 public class AttrRespVo extends AttrVo{
 
     private String catelogName;
+
     private String groupName;
 
     private Long[] catelogPath;

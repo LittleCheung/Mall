@@ -2,8 +2,8 @@ package com.mall.product.service.impl;
 
 import com.mall.product.dao.SpuImagesDao;
 import com.mall.product.service.SpuImagesService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +17,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mall.product.entity.SpuImagesEntity;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("spuImagesService")
 public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesDao, SpuImagesEntity> implements SpuImagesService {

@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Configuration
 public class MyRedissonConfig {

@@ -9,8 +9,7 @@ import java.util.List;
 
 /**
  * 商品属性
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface AttrDao extends BaseMapper<AttrEntity> {

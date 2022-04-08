@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
-import com.yxj.gulimall.common.valid.AddGroup;
-import com.yxj.gulimall.common.valid.ListValue;
-import com.yxj.gulimall.common.valid.UpdateGroup;
-import com.yxj.gulimall.common.valid.UpdateStatusGroup;
+import com.mall.common.valid.AddGroup;
+import com.mall.common.valid.ListValue;
+import com.mall.common.valid.UpdateGroup;
+import com.mall.common.valid.UpdateStatusGroup;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
@@ -16,11 +16,13 @@ import javax.validation.constraints.*;
 
 /**
  * 品牌信息实体类
+ *
  * @author littlecheung
  */
 @Data
 @TableName("pms_brand")
 public class BrandEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

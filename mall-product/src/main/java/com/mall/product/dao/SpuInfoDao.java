@@ -7,8 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * spu信息
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface SpuInfoDao extends BaseMapper<SpuInfoEntity> {

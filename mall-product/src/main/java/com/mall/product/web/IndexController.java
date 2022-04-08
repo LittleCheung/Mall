@@ -17,15 +17,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Controller
 public class IndexController {
 
     @Autowired
     CategoryService categoryService;
-    // 1 查询所有的1级分类
 
     @Autowired
     RedissonClient redisson;

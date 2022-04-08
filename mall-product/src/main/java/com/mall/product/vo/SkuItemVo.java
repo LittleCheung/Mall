@@ -6,8 +6,10 @@ import com.mall.product.entity.SpuInfoDescEntity;
 import lombok.Data;
 
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class SkuItemVo {

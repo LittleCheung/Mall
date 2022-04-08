@@ -1,11 +1,15 @@
 package com.mall.product.vo;
 
 import lombok.Data;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
-public class AttrGroupRelatinVo {
+public class AttrGroupRelationVo {
+
     private Long attrId;
+
     private Long attrGroupId;
 }

@@ -8,12 +8,14 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class Bounds {
 
     private BigDecimal buyBounds;
+
     private BigDecimal growBounds;
 
 }

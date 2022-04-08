@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class AttrVo {

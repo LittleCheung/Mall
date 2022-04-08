@@ -8,14 +8,17 @@ import lombok.ToString;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @ToString
 @Data
 public class Attr {
 
     private Long attrId;
+
     private String attrName;
+
     private String attrValue;
 
 }

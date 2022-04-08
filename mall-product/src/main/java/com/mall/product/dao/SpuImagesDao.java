@@ -6,8 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * spu图片
- *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface SpuImagesDao extends BaseMapper<SpuImagesEntity> {

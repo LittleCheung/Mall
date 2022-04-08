@@ -3,8 +3,8 @@ package com.mall.product.service.impl;
 import com.mall.product.dao.SkuSaleAttrValueDao;
 import com.mall.product.entity.SkuSaleAttrValueEntity;
 import com.mall.product.vo.SkuItemSaleAttrVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +17,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mall.product.service.SkuSaleAttrValueService;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("skuSaleAttrValueService")
 public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {

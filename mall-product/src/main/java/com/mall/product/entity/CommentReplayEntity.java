@@ -10,11 +10,12 @@ import lombok.Data;
 /**
  * 商品评价回复关系
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_comment_replay")
 public class CommentReplayEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

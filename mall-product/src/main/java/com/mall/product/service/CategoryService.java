@@ -3,14 +3,15 @@ package com.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.product.entity.CategoryEntity;
 import com.mall.product.vo.Catelog2Vo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 
 import java.util.List;
 import java.util.Map;
 
 /**
  * 商品三级分类
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface CategoryService extends IService<CategoryEntity> {
 

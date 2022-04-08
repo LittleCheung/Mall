@@ -8,8 +8,8 @@ import com.mall.product.entity.ProductAttrValueEntity;
 import com.mall.product.service.AttrService;
 import com.mall.product.service.ProductAttrValueService;
 import com.mall.product.vo.AttrVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.product.vo.AttrRespVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,17 +17,18 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 商品属性
- *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("product/attr")
 public class AttrController {
+
     @Autowired
     private AttrService attrService;
 
     @Autowired
     ProductAttrValueService productAttrValueService;
+
     @GetMapping("/base/listforspu/{spuId}")
     public R baseAttrlistforspu(@PathVariable("spuId") Long spuId) {
         List<ProductAttrValueEntity> entities = productAttrValueService.baseAttrlistforspu(spuId);
@@ -76,8 +77,6 @@ public class AttrController {
 
         return R.ok();
     }
-
-
 
     /**
      * 修改

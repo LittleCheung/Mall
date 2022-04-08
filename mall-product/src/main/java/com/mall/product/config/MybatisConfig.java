@@ -7,12 +7,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
+ *
+ * “@EnableTransactionManagement”表示开启事务
  */
 @Configuration
-@EnableTransactionManagement // 开启事务
-@MapperScan("com.yxj.gulimall.product.dao")
+@EnableTransactionManagement
+@MapperScan("com.mall.product.dao")
 public class MybatisConfig {
+
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();

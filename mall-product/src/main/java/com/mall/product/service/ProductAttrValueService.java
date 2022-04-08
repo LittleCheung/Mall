@@ -2,7 +2,7 @@ package com.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.product.entity.ProductAttrValueEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * spu属性值
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface ProductAttrValueService extends IService<ProductAttrValueEntity> {
 

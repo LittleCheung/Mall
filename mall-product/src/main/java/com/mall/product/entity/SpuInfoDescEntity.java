@@ -11,11 +11,12 @@ import lombok.Data;
 /**
  * spu信息介绍
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_spu_info_desc")
 public class SpuInfoDescEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

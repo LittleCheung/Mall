@@ -1,15 +1,16 @@
 package com.mall.product.feign;
 
 import com.mall.product.fallback.SeckillFeignServiceFallBack;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * @author yaoxinjia
+ * 秒杀模块远程调用接口
+ * @author littlecheung
  */
-@FeignClient(value = "gulimall-seckill",fallback = SeckillFeignServiceFallBack.class)
+@FeignClient(value = "mall-seckill",fallback = SeckillFeignServiceFallBack.class)
 public interface SeckillFeignService {
 
     /**

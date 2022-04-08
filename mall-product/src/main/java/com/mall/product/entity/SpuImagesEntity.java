@@ -10,11 +10,12 @@ import lombok.Data;
 /**
  * spu图片
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_spu_images")
 public class SpuImagesEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

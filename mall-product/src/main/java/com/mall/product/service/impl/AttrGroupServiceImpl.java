@@ -7,8 +7,8 @@ import com.mall.product.service.AttrGroupService;
 import com.mall.product.service.AttrService;
 import com.mall.product.vo.AttrGroupWithAttrsVo;
 import com.mall.product.vo.SpuItemAttrGroupVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.util.StringUtils;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("attrGroupService")
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEntity> implements AttrGroupService {

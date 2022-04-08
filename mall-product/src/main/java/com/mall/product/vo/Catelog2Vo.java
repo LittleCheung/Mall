@@ -5,16 +5,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Catelog2Vo {
-    private String catalog1Id;  // 1级父分类id
-    private List<Catelog3Vo> catalog3List; //  三级子分类
+    // 1级父分类id
+    private String catalog1Id;
+    //  三级子分类
+    private List<Catelog3Vo> catalog3List;
+
     private String id;
+
     private String name;
 
     @NoArgsConstructor

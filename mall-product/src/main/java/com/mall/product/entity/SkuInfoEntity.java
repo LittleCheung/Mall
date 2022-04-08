@@ -11,11 +11,12 @@ import lombok.Data;
 /**
  * sku信息
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_sku_info")
 public class SkuInfoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

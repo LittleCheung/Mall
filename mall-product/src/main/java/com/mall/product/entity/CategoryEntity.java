@@ -14,11 +14,12 @@ import lombok.Data;
 /**
  * 商品三级分类
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_category")
 public class CategoryEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

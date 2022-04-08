@@ -6,8 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 商品三级分类
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface CategoryDao extends BaseMapper<CategoryEntity> {

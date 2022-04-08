@@ -6,8 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * sku信息
- * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Mapper
 public interface SkuInfoDao extends BaseMapper<SkuInfoEntity> {

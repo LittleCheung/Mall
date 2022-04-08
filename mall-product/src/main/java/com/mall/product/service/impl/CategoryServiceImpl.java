@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.mall.product.entity.CategoryEntity;
 import com.mall.product.service.CategoryBrandRelationService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.product.vo.Catelog2Vo;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -32,6 +32,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * 商品三级分类
+ *
  * @author littlecheung
  */
 @Service("categoryService")

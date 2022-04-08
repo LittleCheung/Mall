@@ -1,7 +1,7 @@
 package com.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.product.entity.SpuCommentEntity;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 商品评价
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface SpuCommentService extends IService<SpuCommentEntity> {
 

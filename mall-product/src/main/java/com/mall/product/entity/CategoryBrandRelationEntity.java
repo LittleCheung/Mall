@@ -10,11 +10,12 @@ import lombok.Data;
 /**
  * 品牌分类关联
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_category_brand_relation")
 public class CategoryBrandRelationEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

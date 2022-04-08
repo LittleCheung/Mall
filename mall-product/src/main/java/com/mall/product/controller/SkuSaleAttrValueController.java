@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +16,7 @@ import com.mall.product.service.SkuSaleAttrValueService;
 
 /**
  * sku销售属性&值
- *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("product/skusaleattrvalue")

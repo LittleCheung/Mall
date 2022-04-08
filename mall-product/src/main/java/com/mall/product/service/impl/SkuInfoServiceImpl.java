@@ -10,7 +10,6 @@ import com.mall.common.utils.R;
 import com.mall.product.entity.SkuImagesEntity;
 import com.mall.product.entity.SpuInfoDescEntity;
 import com.mall.product.feign.SeckillFeignService;
-import com.mall.product.service.*;
 import com.mall.product.vo.SeckillSkuVo;
 import com.mall.product.vo.SkuItemSaleAttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,10 @@ import com.mall.product.dao.SkuInfoDao;
 import com.mall.product.entity.SkuInfoEntity;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
+
 /**
+ *
  * @author yaoxinjia
  */
 @Service("skuInfoService")
@@ -54,7 +56,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     private ThreadPoolExecutor executor;
 
 
-    @Autowired
+    @Resource
     private SeckillFeignService seckillFeignService;
 
     @Override

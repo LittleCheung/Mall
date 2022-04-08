@@ -3,9 +3,9 @@ package com.mall.product.service.impl;
 import com.mall.product.dao.AttrAttrgroupRelationDao;
 import com.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.mall.product.service.AttrAttrgroupRelationService;
-import com.mall.product.vo.AttrGroupRelatinVo;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.product.vo.AttrGroupRelationVo;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("attrAttrgroupRelationService")
 public class AttrAttrgroupRelationServiceImpl extends ServiceImpl<AttrAttrgroupRelationDao, AttrAttrgroupRelationEntity> implements AttrAttrgroupRelationService {
@@ -34,7 +35,7 @@ public class AttrAttrgroupRelationServiceImpl extends ServiceImpl<AttrAttrgroupR
     }
 
     @Override
-    public void saveBatch(List<AttrGroupRelatinVo> vos) {
+    public void saveBatch(List<AttrGroupRelationVo> vos) {
         List<AttrAttrgroupRelationEntity> collect = vos.stream().map((item) -> {
             AttrAttrgroupRelationEntity relationEntity = new AttrAttrgroupRelationEntity();
             BeanUtils.copyProperties(item, relationEntity);

@@ -3,14 +3,14 @@ package com.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.product.entity.SpuInfoEntity;
 import com.mall.product.vo.SpuSaveVo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 
 import java.util.Map;
 
 /**
  * spu信息
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 

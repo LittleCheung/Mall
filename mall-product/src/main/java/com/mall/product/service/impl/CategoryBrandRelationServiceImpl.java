@@ -3,8 +3,8 @@ package com.mall.product.service.impl;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.mall.product.dao.BrandDao;
 import com.mall.product.entity.CategoryEntity;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.product.dao.CategoryDao;
 import com.mall.product.entity.BrandEntity;
 import com.mall.product.service.BrandService;
@@ -24,7 +24,8 @@ import com.mall.product.entity.CategoryBrandRelationEntity;
 import com.mall.product.service.CategoryBrandRelationService;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("categoryBrandRelationService")
 public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {

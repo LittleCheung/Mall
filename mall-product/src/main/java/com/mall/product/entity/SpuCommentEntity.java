@@ -10,11 +10,12 @@ import lombok.Data;
 /**
  * 商品评价
  * 
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Data
 @TableName("pms_spu_comment")
 public class SpuCommentEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

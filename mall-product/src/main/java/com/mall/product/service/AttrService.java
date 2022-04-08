@@ -1,12 +1,11 @@
 package com.mall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mall.product.vo.AttrGroupRelatinVo;
+import com.mall.product.vo.AttrGroupRelationVo;
 import com.mall.product.vo.AttrVo;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.product.entity.AttrEntity;
 import com.mall.product.vo.AttrRespVo;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ import java.util.Map;
 /**
  * 商品属性
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 public interface AttrService extends IService<AttrEntity> {
 
@@ -30,7 +29,7 @@ public interface AttrService extends IService<AttrEntity> {
 
     List<AttrEntity> getRelationAttr(Long attrgroupId);
 
-    void deleteRelation(AttrGroupRelatinVo[] vos);
+    void deleteRelation(AttrGroupRelationVo[] vos);
 
     PageUtils getNoRelationAttr(Map<String, Object> params, Long attrgroupId);
 

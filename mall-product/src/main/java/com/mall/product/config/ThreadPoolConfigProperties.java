@@ -5,9 +5,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
-@ConfigurationProperties(prefix = "gulimall.thread")
+@ConfigurationProperties(prefix = "mall.thread")
 @Component
 @Data
 public class ThreadPoolConfigProperties {

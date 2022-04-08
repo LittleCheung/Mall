@@ -6,11 +6,11 @@ import java.util.Map;
 
 import com.mall.product.entity.BrandEntity;
 import com.mall.product.service.BrandService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
-import com.yxj.gulimall.common.valid.AddGroup;
-import com.yxj.gulimall.common.valid.UpdateGroup;
-import com.yxj.gulimall.common.valid.UpdateStatusGroup;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
+import com.mall.common.valid.AddGroup;
+import com.mall.common.valid.UpdateGroup;
+import com.mall.common.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

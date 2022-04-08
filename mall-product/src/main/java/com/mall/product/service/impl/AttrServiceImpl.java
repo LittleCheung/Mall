@@ -6,16 +6,15 @@ import com.mall.product.dao.AttrDao;
 import com.mall.product.dao.AttrGroupDao;
 import com.mall.product.entity.AttrGroupEntity;
 import com.mall.product.entity.CategoryEntity;
-import com.mall.product.vo.AttrGroupRelatinVo;
-import com.yxj.gulimall.common.constant.ProductConstant;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.Query;
+import com.mall.product.vo.AttrGroupRelationVo;
+import com.mall.common.constant.ProductConstant;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.Query;
 import com.mall.product.dao.CategoryDao;
 import com.mall.product.entity.AttrAttrgroupRelationEntity;
 import com.mall.product.service.CategoryService;
 import com.mall.product.vo.AttrRespVo;
 import com.mall.product.vo.AttrVo;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -37,7 +36,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service("attrService")
 public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements AttrService {
@@ -203,7 +203,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     }
 
     @Override
-    public void deleteRelation(AttrGroupRelatinVo[] vos) {
+    public void deleteRelation(AttrGroupRelationVo[] vos) {
         List<AttrAttrgroupRelationEntity> entities = Arrays.asList(vos).stream().map((item) -> {
             AttrAttrgroupRelationEntity relationEntity = new AttrAttrgroupRelationEntity();
             BeanUtils.copyProperties(item, relationEntity);

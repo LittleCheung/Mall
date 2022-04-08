@@ -5,7 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class SeckillSkuVo {
