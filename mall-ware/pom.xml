@@ -6,7 +6,7 @@
     <artifactId>mall-ware</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mall-ware</name>
-    <description>仓储服务</description>
+    <description>仓储服务模块</description>
 
     <properties>
         <java.version>1.8</java.version>

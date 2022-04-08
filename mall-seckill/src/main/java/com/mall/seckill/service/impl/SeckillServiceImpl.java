@@ -8,9 +8,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.mall.seckill.service.SeckillService;
-import com.yxj.gulimall.common.to.mq.SeckillOrderTo;
-import com.yxj.gulimall.common.utils.R;
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.to.mq.SeckillOrderTo;
+import com.mall.common.utils.R;
+import com.mall.common.vo.MemberRespVo;
 import com.mall.seckill.feign.CouponFeignService;
 import com.mall.seckill.feign.ProductFeignService;
 import com.mall.seckill.interceptor.LoginUserInterceptor;
@@ -37,7 +37,8 @@ import java.util.stream.Collectors;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Slf4j
 @Service

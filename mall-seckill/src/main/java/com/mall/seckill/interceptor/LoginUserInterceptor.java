@@ -1,6 +1,6 @@
 package com.mall.seckill.interceptor;
 
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.vo.MemberRespVo;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 
-import static com.yxj.gulimall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
+import static com.mall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Component
 public class LoginUserInterceptor implements HandlerInterceptor {

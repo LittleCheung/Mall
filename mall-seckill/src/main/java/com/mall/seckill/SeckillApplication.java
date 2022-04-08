@@ -8,9 +8,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
+ * 秒杀服务模块启动类
  * @author yaoxinjia
+ *
+ * “@EnableRedisHttpSession”表示开启springsession
  */
-@EnableRedisHttpSession     //开启springsession
+@EnableRedisHttpSession
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})

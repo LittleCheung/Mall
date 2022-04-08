@@ -10,7 +10,8 @@ import java.io.IOException;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Configuration
 public class MyRedissonConfig {

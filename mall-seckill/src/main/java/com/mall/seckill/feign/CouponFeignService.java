@@ -1,10 +1,11 @@
 package com.mall.seckill.feign;
 
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
+ * 优惠券服务远程调用代码
  * @author yaoxinjia
  */
 @FeignClient("gulimall-coupon")

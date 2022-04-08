@@ -8,7 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Configuration
 public class SeckillWebConfig implements WebMvcConfigurer {

@@ -2,7 +2,7 @@ package com.mall.seckill.controller;
 
 import com.mall.seckill.service.SeckillService;
 import com.mall.seckill.to.SeckillSkuRedisTo;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Controller
 public class SeckillController {
