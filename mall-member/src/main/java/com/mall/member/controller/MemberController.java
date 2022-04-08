@@ -2,9 +2,9 @@ package com.mall.member.controller;
 import com.mall.member.exception.PhoneException;
 import com.mall.member.service.MemberService;
 import com.mall.member.vo.SocialUser;
-import com.yxj.gulimall.common.exception.BizCodeEnum;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.exception.BizCodeEnum;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.member.entity.MemberEntity;
 import com.mall.member.exception.UsernameException;
 import com.mall.member.vo.MemberUserLoginVo;
@@ -18,12 +18,13 @@ import java.util.Map;
 
 
 /**
- *
- * @author yaoxinjia
+ * 处理会员相关请求
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("member/member")
 public class MemberController {
+
     @Autowired
     private MemberService memberService;
 

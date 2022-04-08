@@ -9,10 +9,7 @@ import lombok.Data;
 
 /**
  * 会员收藏的商品
- * 
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:58:11
+ * @author littlecheung
  */
 @Data
 @TableName("ums_member_collect_spu")

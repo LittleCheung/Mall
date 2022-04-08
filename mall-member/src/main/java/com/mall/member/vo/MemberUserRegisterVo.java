@@ -4,8 +4,8 @@ import lombok.Data;
 
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 会员注册实体
+ * @author littlecheung
  */
 @Data
 public class MemberUserRegisterVo {

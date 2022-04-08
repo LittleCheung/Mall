@@ -7,8 +7,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /**
- *
- * @author yaoxinjia
+ * 会员模块拦截器配置类
+ * @author littlecheung
  */
 @Configuration
 public class MemberWebConfig implements WebMvcConfigurer {

@@ -1,7 +1,7 @@
 package com.mall.member.controller;
 
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.member.entity.GrowthChangeHistoryEntity;
 import com.mall.member.service.GrowthChangeHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,9 @@ import java.util.Arrays;
 import java.util.Map;
 
 
-
 /**
- *
- * @author yaoxinjia
+ * 处理成长值变化历史记录请求
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("member/growthchangehistory")

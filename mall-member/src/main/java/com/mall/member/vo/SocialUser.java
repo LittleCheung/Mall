@@ -1,9 +1,10 @@
 package com.mall.member.vo;
 
 import lombok.Data;
+
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 社交用户实体
+ * @author littlecheung
  */
 @Data
 public class SocialUser {

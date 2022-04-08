@@ -1,8 +1,8 @@
 package com.mall.member.exception;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 手机号相关异常处理
+ * @author littlecheung
  */
 public class PhoneException extends RuntimeException {
 

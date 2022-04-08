@@ -1,7 +1,8 @@
 package com.mall.member.exception;
+
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 用户名已存在异常处理
+ * @author littlecheung
  */
 public class UserNameExistException extends RuntimeException{
 

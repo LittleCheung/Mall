@@ -2,7 +2,7 @@ package com.mall.member.web;
 
 import com.alibaba.fastjson.JSON;
 import com.mall.member.feign.OrderFeignService;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ *
+ * @author 处理会员收货地址请求
  */
 @Controller
 public class MemberWebController {

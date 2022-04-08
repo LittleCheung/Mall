@@ -1,5 +1,6 @@
 package com.mall.member.feign;
-import com.yxj.gulimall.common.utils.R;
+
+import com.mall.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 订单模块远程调用接口
+ * @author littlecheung
  */
-@FeignClient("gulimall-order")
+@FeignClient("mall-order")
 public interface OrderFeignService {
 
     /**

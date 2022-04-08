@@ -5,11 +5,8 @@ import com.mall.member.entity.MemberLevelEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 会员
- *
- * @author yaoxinjia
- * @email 894548575@qq.com
- * @date 2021-02-09 20:58:11
+ * 会员等级
+ * @author littlecheung
  */
 @Mapper
 public interface MemberLevelDao extends BaseMapper<MemberLevelEntity> {

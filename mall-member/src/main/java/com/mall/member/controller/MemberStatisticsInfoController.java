@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.mall.member.service.MemberStatisticsInfoService;
-import com.yxj.gulimall.common.utils.PageUtils;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.utils.PageUtils;
+import com.mall.common.utils.R;
 import com.mall.member.entity.MemberStatisticsInfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- *
- * @author yaoxinjia
+ * 处理会员统计信息请求
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("member/memberstatisticsinfo")
 public class MemberStatisticsInfoController {
+
     @Autowired
     private MemberStatisticsInfoService memberStatisticsInfoService;
 

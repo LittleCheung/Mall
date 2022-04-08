@@ -10,11 +10,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
- * @author yaoxinjia
+ * 服务调用配置类
+ * @author littlecheung
  */
 @Configuration
-public class GuliFeignConfig {
+public class FeignConfig {
 
     @Bean("requestInterceptor")
     public RequestInterceptor requestInterceptor() {

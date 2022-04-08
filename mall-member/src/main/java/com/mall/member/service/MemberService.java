@@ -2,7 +2,7 @@ package com.mall.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.member.vo.SocialUser;
-import com.yxj.gulimall.common.utils.PageUtils;
+import com.mall.common.utils.PageUtils;
 import com.mall.member.entity.MemberEntity;
 import com.mall.member.exception.PhoneException;
 import com.mall.member.exception.UsernameException;
@@ -12,8 +12,8 @@ import com.mall.member.vo.MemberUserRegisterVo;
 import java.util.Map;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 会员
+ * @author littleCheung
  */
 public interface MemberService extends IService<MemberEntity> {
 

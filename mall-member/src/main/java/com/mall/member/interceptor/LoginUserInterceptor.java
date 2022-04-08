@@ -1,6 +1,6 @@
 package com.mall.member.interceptor;
 
-import com.yxj.gulimall.common.vo.MemberRespVo;
+import com.mall.common.vo.MemberRespVo;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 
-import static com.yxj.gulimall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
+import static com.mall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
 
 /**
- * @author yaoxinjia
- * @email 894548575@qq.com
+ * 用户登录拦截器
+ * @author littlecheung
  */
 @Component
 public class LoginUserInterceptor implements HandlerInterceptor {
@@ -45,7 +45,7 @@ public class LoginUserInterceptor implements HandlerInterceptor {
             //未登录，返回登录页面
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('请先进行登录，再进行后续操作！');location.href='http://auth.gulimall.com/login.html'</script>");
+            out.println("<script>alert('请先进行登录，再进行后续操作！');location.href='http://auth.mall.com/login.html'</script>");
             // session.setAttribute("msg", "请先进行登录");
             // response.sendRedirect("http://auth.gulimall.com/login.html");
             return false;
