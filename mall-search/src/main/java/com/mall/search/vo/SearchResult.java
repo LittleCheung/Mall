@@ -1,12 +1,14 @@
 package com.mall.search.vo;
 
-import com.yxj.gulimall.common.to.es.SkuEsModel;
+import com.mall.common.to.es.SkuEsModel;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ * 搜索结果实体
+ * @author littlecheung
  */
 @Data
 public class SearchResult {

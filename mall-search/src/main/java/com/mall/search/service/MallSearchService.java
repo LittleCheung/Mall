@@ -4,8 +4,10 @@ import com.mall.search.vo.SearchParam;
 import com.mall.search.vo.SearchResult;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface MallSearchService {
+
     SearchResult search(SearchParam param);
 }

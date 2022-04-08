@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
+ * 搜索服务模块启动类
  * @author littlecheung
  */
 @EnableRedisHttpSession

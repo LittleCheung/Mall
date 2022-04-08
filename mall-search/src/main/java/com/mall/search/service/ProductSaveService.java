@@ -1,13 +1,14 @@
 package com.mall.search.service;
 
+import com.mall.common.to.es.SkuEsModel;
 
-import com.yxj.gulimall.common.to.es.SkuEsModel;
-
-import java.io.IOException;
 import java.util.List;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 public interface ProductSaveService {
+
     boolean productStatusUp(List<SkuEsModel> skuEsModels) throws Exception;
 }

@@ -6,8 +6,8 @@ import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.mall.search.vo.AttrResponseVo;
 import com.mall.search.vo.SearchParam;
-import com.yxj.gulimall.common.to.es.SkuEsModel;
-import com.yxj.gulimall.common.utils.R;
+import com.mall.common.to.es.SkuEsModel;
+import com.mall.common.utils.R;
 import com.mall.search.feign.ProductFeignService;
 import com.mall.search.service.MallSearchService;
 import com.mall.search.vo.BrandVo;
@@ -46,15 +46,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Slf4j
 @Service
 public class MallSearchServiceImpl implements MallSearchService {
+
     @Autowired
     private RestHighLevelClient client;
+
     @Autowired
     private ProductFeignService productFeignService;
+
     @Override
     public SearchResult search(SearchParam param) {
         //1、动态构建出查询需要的DSL语句

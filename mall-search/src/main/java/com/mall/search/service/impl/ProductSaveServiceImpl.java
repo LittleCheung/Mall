@@ -3,7 +3,7 @@ package com.mall.search.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
-import com.yxj.gulimall.common.to.es.SkuEsModel;
+import com.mall.common.to.es.SkuEsModel;
 import com.mall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -17,8 +17,10 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Service
 @Slf4j
@@ -26,11 +28,10 @@ public class ProductSaveServiceImpl implements ProductSaveService {
 
     @Autowired
     RestHighLevelClient restHighLevelClient;
+
     @Override
     public boolean productStatusUp(List<SkuEsModel> skuEsModels) throws Exception {
         // 保存到es
-
-
         // 1 给es中建立索引，product
         BulkRequest bulkRequest = new BulkRequest();
         // 1 构造保存请求

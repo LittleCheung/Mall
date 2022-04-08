@@ -1,11 +1,15 @@
 package com.mall.search.vo;
 
 import lombok.Data;
+
 /**
- * @author yaoxinjia
+ * 品牌实体
+ * @author littlecheung
  */
 @Data
 public class BrandVo {
+
     private Long brandId;
+
     private String brandName;
 }

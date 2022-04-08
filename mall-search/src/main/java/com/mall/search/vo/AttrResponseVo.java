@@ -2,8 +2,10 @@ package com.mall.search.vo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+
 /**
- * @author yaoxinjia
+ * 响应属性实体
+ * @author littlecheung
  */
 @Data
 public class AttrResponseVo {

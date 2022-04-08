@@ -5,7 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author yaoxinjia
+ * 搜索参数实体
+ * @author littlecheung
  */
 @Data
 public class SearchParam {
