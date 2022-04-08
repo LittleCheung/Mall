@@ -1,4 +1,4 @@
-package com.mall.gateway.handler;
+package com.mall.gateway.controller;
 
 import com.mall.gateway.config.MySwaggerResourceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,13 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import java.util.List;
 
 /**
- * @author 从前慢
+ *
+ * @author littlecheung
  */
 @RestController
 @RequestMapping("/swagger-resources")
 public class SwaggerResourceController {
+
     private MySwaggerResourceProvider swaggerResourceProvider;
 
     @Autowired

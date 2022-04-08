@@ -17,12 +17,14 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
+
         - id: third_party_route
           uri: lb://mall-third-party
           predicates:
             - Path=/api/thirdparty/**
           filters:
             - RewritePath=/api/thirdparty/(?<segment>.*),/$\{segment}
+
 
         - id: member_route
           uri: lb://mall-member
@@ -38,6 +40,7 @@ spring:
             - Path=/api/ware/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
+
 
         - id: admin_route
           uri: lb://renren-fast
@@ -58,20 +61,24 @@ spring:
           predicates:
             - Host=search.mall.com
 
+
         - id: mall_auth_route
           uri: lb://mall-auth-server
           predicates:
             - Host=auth.mall.com
+
 
         - id: mall_cart_route
           uri: lb://mall-cart
           predicates:
             - Host=cart.gulimall.com
 
+
         - id: mall_order_route
           uri: lb://mall-order
           predicates:
             - Host=order.mall.com
+
 
         - id: mall_member_route
           uri: lb://mall-member

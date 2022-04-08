@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 
 /**
- *
+ * 服务限流后处理的配置类
  * @author littlecheung
  */
 @Configuration

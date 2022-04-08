@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  *
- * @author yaoxinjia
+ * @author littlecheung
  */
 @Component
 public class MySwaggerResourceProvider implements SwaggerResourcesProvider {
