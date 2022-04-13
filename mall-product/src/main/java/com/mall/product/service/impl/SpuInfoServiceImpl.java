@@ -28,6 +28,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 /**
@@ -75,15 +76,15 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
         IPage<SpuInfoEntity> page = this.page(
                 new Query<SpuInfoEntity>().getPage(params),
                 new QueryWrapper<SpuInfoEntity>()
         );
-
         return new PageUtils(page);
     }
 
-//    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void savaSpuInfo(SpuSaveVo vo) {
         // 1 保存spu基本信息  pms_spu_info
@@ -214,7 +215,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         IPage<SpuInfoEntity> page = this.page(
                 new Query<SpuInfoEntity>().getPage(params),wrapper
         );
-
         return new PageUtils(page);
     }
 
