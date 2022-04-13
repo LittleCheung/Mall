@@ -9,7 +9,6 @@ spring:
       oss:
         endpoint: oss-cn-shenzhen.aliyuncs.com
         bucket: mall-littlecheung
-
       sms:
         host: http://dingxin.market.alicloudapi.com
         path: /dx/sendSms
@@ -17,6 +16,7 @@ spring:
         tpl_id: TP1711063
   application:
     name: mall-third-party
+
 server:
   port: 30000
 

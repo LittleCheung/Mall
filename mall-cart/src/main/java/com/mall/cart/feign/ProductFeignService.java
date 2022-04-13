@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * 用户模块远程服务调用接口
+ * 商品模块远程服务调用接口
  * @author littlecheung
  */
 @FeignClient("mall-product")

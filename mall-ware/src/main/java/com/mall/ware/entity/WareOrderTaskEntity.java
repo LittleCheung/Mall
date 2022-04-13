@@ -8,7 +8,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- *
+ * 库存工作单
  * @author littlecheung
  */
 @Data

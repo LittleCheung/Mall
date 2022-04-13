@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 
 /**
- *
+ * Seata处理分布式事务配置类
  * @author littlecheung
  */
 @Configuration
@@ -22,6 +22,11 @@ public class MySeataConfig {
     DataSourceProperties dataSourceProperties;
 
 
+    /**
+     * 配置Seata数据源
+     * @param dataSourceProperties
+     * @return
+     */
     @Bean
     public DataSource dataSource(DataSourceProperties dataSourceProperties) {
 
@@ -29,8 +34,6 @@ public class MySeataConfig {
         if (StringUtils.hasText(dataSourceProperties.getName())) {
             dataSource.setPoolName(dataSourceProperties.getName());
         }
-
         return new DataSourceProxy(dataSource);
     }
-
 }

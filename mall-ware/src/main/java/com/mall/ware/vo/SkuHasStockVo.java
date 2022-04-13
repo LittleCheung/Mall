@@ -4,7 +4,8 @@ import lombok.Data;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class SkuHasStockVo {
@@ -12,5 +13,4 @@ public class SkuHasStockVo {
     private Long skuId;
 
     private Boolean hasStock;
-
 }

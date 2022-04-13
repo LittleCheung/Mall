@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import static com.lly835.bestpay.enums.BestPayTypeEnum.WXPAY_NATIVE;
 
 /**
- *
+ * 处理支付请求
  * @author littlecheung
  */
 @Slf4j
@@ -40,9 +40,7 @@ public class PayWebController {
     private WxPayConfig wxPayConfig;
 
     /**
-     * 用户下单:支付宝支付
-     * 1、让支付页让浏览器展示
-     * 2、支付成功以后，跳转到用户的订单列表页
+     * 支付宝支付
      * @param orderSn
      * @return
      * @throws AlipayApiException
@@ -98,7 +96,4 @@ public class PayWebController {
         log.info("查询支付记录...");
         return orderService.getOrderByOrderSn(orderId);
     }
-
-
-
 }

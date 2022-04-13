@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * 处理验证码发送请求
  * @author littlecheung
  */
 @RestController
@@ -20,7 +20,7 @@ public class SmsSendController {
     private SmsComponent smsComponent;
 
     /**
-     * 发送验证码
+     * 提供给别的服务进行调用，发送验证码
      * @param phone
      * @param code
      * @return

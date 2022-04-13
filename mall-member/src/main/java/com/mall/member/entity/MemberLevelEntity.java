@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 会员等级
+ * 会员等级实体类
  * @author littlecheung
  */
 @Data

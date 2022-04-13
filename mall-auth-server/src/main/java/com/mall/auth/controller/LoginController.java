@@ -56,15 +56,16 @@ public class LoginController {
     public R sendCode(@RequestParam("phone") String phone){
         //1 防止接口被恶意刷验证码
         String redisCode = redisTemplate.opsForValue().get(AuthServerConstant.SMS_CODE_CACHE_PREFIX + phone);
+
         if (StringUtils.isNotBlank(redisCode)){
             //redis存储时间戳
             long l = Long.parseLong(redisCode.split("_")[1]);
+
+            //如果1分钟内已给这个手机号发过短信就不能再发
             if (System.currentTimeMillis() - l < 60000){
-                //如果1分钟内已给这个手机号发过短信就不能再发
                 return R.error(BizCodeEnum.SMS_CODE_EXCEPTION.getCode(),BizCodeEnum.SMS_CODE_EXCEPTION.getMsg());
             }
         }
-
         //2 验证码再次校验，之后存到redis，key=phone，value=code+时间戳
         String code = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 5);
         String redisValue = code +"_"+System.currentTimeMillis();
@@ -73,6 +74,7 @@ public class LoginController {
         feignService.sendCode(phone,code);
         return R.ok();
     }
+
 
     /**
      * 使用手机号注册
@@ -85,24 +87,25 @@ public class LoginController {
     public String register(@Valid UserRegisterVo vo, BindingResult result, RedirectAttributes redirectAttributes){
         if (result.hasErrors()){
             //校验出错，转发到注册页
-            Map<String, String> map = result.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+            Map<String, String> map = result.getFieldErrors().stream()
+                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
             redirectAttributes.addFlashAttribute("errors",map);
             return "redirect:http://auth.mall.com/reg.html";
         }
-
         //1 校验验证码
         String code = vo.getCode();
         String s = redisTemplate.opsForValue().get(AuthServerConstant.SMS_CODE_CACHE_PREFIX + vo.getPhone());
         if (StringUtils.isNotBlank(s)){
             if (code.equals(s.split("_")[0])){
-                //删除验证码;令牌机制
+                //删除验证码：采用令牌机制
                 redisTemplate.delete(AuthServerConstant.SMS_CODE_CACHE_PREFIX + vo.getPhone());
-                //验证码校验通过后，真正调用第三方服务远程服务注册
+                //验证码校验通过，真正调用第三方服务远程服务注册
                 R r = memberFeignService.regist(vo);
                 if (r.getCode()==0){
                     //成功就转到登录页
                     return "redirect:http://auth.mall.com/login.html";
                 }else{
+                    //失败就转到注册页
                     Map<String,Object> map = new HashMap<>();
                     map.put("msg",r.get("msg"));
                     System.out.println(map);
@@ -125,6 +128,7 @@ public class LoginController {
         }
     }
 
+
     /**
      * 使用手机号登录
      * @param vo 用户登录实体
@@ -134,11 +138,11 @@ public class LoginController {
      */
     @PostMapping("/login")
     public String login(UserLoginVo vo, RedirectAttributes redirectAttributes, HttpSession session){
-        //远程登录
+
         R r = memberFeignService.login(vo);
         if (r.getCode()==0){
-            MemberRespVo data = r.getData(new TypeReference<MemberRespVo>() {
-            });
+            MemberRespVo data = r.getData(new TypeReference<MemberRespVo>() {});
+            // 登录成功放到session中
             session.setAttribute(AuthServerConstant.SESSION_LOGIN_KEY,data);
             return "redirect:http://mall.com";
         }else{
@@ -149,21 +153,22 @@ public class LoginController {
         }
     }
 
+
     /**
-     * 处理页面跳转请求
+     * 定向到登录页
      * @param session
      * @return
      */
     @GetMapping("/login.html")
     public String loginPage(HttpSession session){
+
         Object attribute = session.getAttribute(AuthServerConstant.SESSION_LOGIN_KEY);
         if (attribute == null){
-            //没登录去登录页
+            //没登录跳转去登录页
             return "login";
         }else {
-            //已登录去首页
+            //已登录跳转去首页
             return "redirect:http://mall.com";
         }
     }
-
 }

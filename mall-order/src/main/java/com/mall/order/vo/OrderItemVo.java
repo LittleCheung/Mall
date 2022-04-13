@@ -20,7 +20,6 @@ public class OrderItemVo {
     private String title;
 
     private String image;
-
     /**
      * 商品套餐属性
      */

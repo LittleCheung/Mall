@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 购物车商品实体类
+ * 购物车内每个独立项内容实体类
  * @author littlecheung
  */
 public class CartItemVo {
@@ -16,7 +16,6 @@ public class CartItemVo {
     private String title;
 
     private String image;
-
     /**
      * 商品套餐属性
      */
@@ -94,8 +93,7 @@ public class CartItemVo {
     }
 
     public void setTotalPrice(BigDecimal totalPrice) {
+
         this.totalPrice = totalPrice;
     }
-
-
 }

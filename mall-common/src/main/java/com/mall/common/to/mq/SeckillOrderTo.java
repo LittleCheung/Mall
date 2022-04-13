@@ -38,6 +38,4 @@ public class SeckillOrderTo {
      * 会员ID
      */
     private Long memberId;
-
-
 }

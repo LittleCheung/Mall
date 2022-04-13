@@ -17,20 +17,23 @@ import org.springframework.util.StringUtils;
 @Service("seckillSkuRelationService")
 public class SeckillSkuRelationServiceImpl extends ServiceImpl<SeckillSkuRelationDao, SeckillSkuRelationEntity> implements SeckillSkuRelationService {
 
+    /**
+     * 分页查询
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
         QueryWrapper<SeckillSkuRelationEntity> queryWrapper = new QueryWrapper<SeckillSkuRelationEntity>();
-
-        //1、获取key
+        //获取key
         String key = (String) params.get("key");
-
+        //获取场次id
         String promotionSessionId = (String) params.get("promotionSessionId");
 
         if (!StringUtils.isEmpty(key)) {
             queryWrapper.eq("id", key);
         }
-
         if (!StringUtils.isEmpty(promotionSessionId)) {
             queryWrapper.eq("promotion_session_id", promotionSessionId);
         }
@@ -38,9 +41,6 @@ public class SeckillSkuRelationServiceImpl extends ServiceImpl<SeckillSkuRelatio
                 new Query<SeckillSkuRelationEntity>().getPage(params),
                 queryWrapper
         );
-
         return new PageUtils(page);
     }
-
-
 }

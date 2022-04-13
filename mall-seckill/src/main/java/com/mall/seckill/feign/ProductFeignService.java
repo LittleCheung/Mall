@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient("mall-product")
 public interface ProductFeignService {
 
+    /**
+     * 获取sku商品信息
+     * @param skuId
+     * @return
+     */
     @RequestMapping("/product/skuinfo/info/{skuId}")
     R getSkuInfo(@PathVariable("skuId") Long skuId);
-
 }

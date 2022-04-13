@@ -12,6 +12,7 @@ import javax.validation.constraints.Pattern;
  */
 @Data
 public class UserRegisterVo {
+
     @NotEmpty(message = "用户名不能为空")
     @Length(min = 6,max = 18,message = "用户名必须是6-18位字符")
     private String userName;

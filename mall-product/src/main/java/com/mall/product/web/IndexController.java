@@ -19,7 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * 测试读写锁的作用
  * @author littlecheung
  */
 @Controller
@@ -37,6 +37,7 @@ public class IndexController {
 
     @GetMapping({"/", "/index.html"})
     public String indexPage(Model model) {
+
         List<CategoryEntity> categoryEntities = categoryService.getLevel1Categorys();
         model.addAttribute("categorys", categoryEntities);
         return "index";
@@ -48,25 +49,24 @@ public class IndexController {
 
         Map<String, List<Catelog2Vo>> catalogJson = categoryService.getCatalogJson();
         return catalogJson;
-
     }
+
 
     @ResponseBody
     @GetMapping("/hello")
     public String hello() {
-        //1 获取一把锁，只要锁的名字一样，就是同一把锁
+        // 1 获取一把锁，只要锁的名字一样就是同一把锁
         RLock lock = redisson.getLock("my-lock");
-        // 2 加锁
-        lock.lock(); // 阻塞式等待，默认加的锁都是30s
-        // 锁的自动续期，如果业务超长，运行期间自动给锁续上新的30s。不用担心业务时间长，锁自动过期被删除
-        // 加锁的业务只要运行完成，就不会给当前锁续期，即使不手动解锁，锁默认在30s以后自动删除
-        lock.lock(10, TimeUnit.SECONDS); //10s自动解锁，自动解锁时间一定要大于业务的执行时间
-//        lock.lock(10, TimeUnit.SECONDS); // 锁时间到了之后，不会自动续期
+        // 2 加锁，阻塞式等待，默认加的锁都是30s
+        // 锁的自动续期: 如果业务超长，运行期间自动给锁续上新的30s。不用担心业务时间长，锁自动过期被删除
+        // 加锁的业务只要运行完成，就不会给当前锁续期，即使不手动解锁，锁默认在30s以后自动删除解锁
+        lock.lock();
+        // lock.lock(10, TimeUnit.SECONDS);  // 10s自动解锁，自动解锁时间一定要大于业务的执行时间，否则锁时间到了之后，不会自动续期
         try {
             System.out.println("加锁成功，执行业务" + Thread.currentThread().getId());
             Thread.sleep(30000);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }finally {
             // 3 解锁
             System.out.println("释放锁" + Thread.currentThread().getId());
@@ -75,6 +75,11 @@ public class IndexController {
         return "hello";
     }
 
+
+    /**
+     * 写数据加读写锁
+     * @return
+     */
     @GetMapping("/write")
     @ResponseBody
     public String writeValue() {
@@ -83,7 +88,6 @@ public class IndexController {
         RLock rLock = lock.writeLock();
         try {
             rLock.lock();
-            System.out.println("nihao");
             s = UUID.randomUUID().toString();
             Thread.sleep(30000);
             redisTemplate.opsForValue().set("writeValue", s);
@@ -95,6 +99,10 @@ public class IndexController {
         return s;
     }
 
+    /**
+     * 读数据加读写锁
+     * @return
+     */
     @GetMapping("/read")
     @ResponseBody
     public String readValue() {

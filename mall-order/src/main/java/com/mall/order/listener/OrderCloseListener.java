@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 /**
- *
+ * 定时关闭订单监听器
  * @author littlecheung
  */
 @RabbitListener(queues = "order.release.order.queue")
@@ -31,7 +31,5 @@ public class OrderCloseListener {
         } catch (Exception e) {
             channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
         }
-
     }
-
 }

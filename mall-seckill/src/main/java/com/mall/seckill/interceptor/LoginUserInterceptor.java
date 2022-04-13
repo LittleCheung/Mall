@@ -22,13 +22,20 @@ public class LoginUserInterceptor implements HandlerInterceptor {
 
     public static ThreadLocal<MemberRespVo> loginUser = new ThreadLocal<>();
 
+    /**
+     * 前置拦截
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String uri = request.getRequestURI();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
         boolean match = antPathMatcher.match("/kill", uri);
-
         if (match) {
             HttpSession session = request.getSession();
             //获取登录的用户信息
@@ -41,9 +48,8 @@ public class LoginUserInterceptor implements HandlerInterceptor {
                 //未登录，返回登录页面
                 response.setContentType("text/html;charset=UTF-8");
                 PrintWriter out = response.getWriter();
-                out.println("<script>alert('请先进行登录，再进行后续操作！');location.href='http://auth.gulimall.com/login.html'</script>");
-                // session.setAttribute("msg", "请先进行登录");
-                // response.sendRedirect("http://auth.gulimall.com/login.html");
+                 session.setAttribute("msg", "请先进行登录");
+                 response.sendRedirect("http://auth.mall.com/login.html");
                 return false;
             }
         }

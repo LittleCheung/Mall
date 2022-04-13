@@ -20,7 +20,7 @@ public class SpuInfoEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 商品id
+	 * 商品id，即skuId
 	 */
 	@TableId
 	private Long id;

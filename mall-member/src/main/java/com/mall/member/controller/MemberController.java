@@ -29,6 +29,11 @@ public class MemberController {
     private MemberService memberService;
 
 
+    /**
+     * 会员注册
+     * @param vo
+     * @return
+     */
     @PostMapping(value = "/register")
     public R register(@RequestBody MemberUserRegisterVo vo) {
 
@@ -39,16 +44,19 @@ public class MemberController {
         } catch (UsernameException e) {
             return R.error(BizCodeEnum.USER_EXISTS_EXCEPTION.getCode(),BizCodeEnum.USER_EXISTS_EXCEPTION.getMsg());
         }
-
         return R.ok();
     }
 
 
+    /**
+     * 处理手机号登录请求
+     * @param vo
+     * @return
+     */
     @PostMapping(value = "/login")
     public R login(@RequestBody MemberUserLoginVo vo) {
 
         MemberEntity memberEntity = memberService.login(vo);
-
         if (memberEntity != null) {
             return R.ok().setData(memberEntity);
         } else {
@@ -57,10 +65,16 @@ public class MemberController {
     }
 
 
+    /**
+     * 处理社交登录请求
+     * @param socialUser
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/oauth2/login")
-    public R oauthLogin(@RequestBody SocialUser socialUser) throws Exception {
+    public R oauth2Login(@RequestBody SocialUser socialUser) throws Exception {
 
-        MemberEntity memberEntity = memberService.login(socialUser);
+        MemberEntity memberEntity = memberService.oauth2login(socialUser);
 
         if (memberEntity != null) {
             return R.ok().setData(memberEntity);
@@ -69,16 +83,23 @@ public class MemberController {
         }
     }
 
+
+    /**
+     * 处理微信登录请求
+     * @param accessTokenInfo
+     * @return
+     */
     @PostMapping(value = "/weixin/login")
     public R weixinLogin(@RequestParam("accessTokenInfo") String accessTokenInfo) {
 
-        MemberEntity memberEntity = memberService.login(accessTokenInfo);
+        MemberEntity memberEntity = memberService.wxlogin(accessTokenInfo);
         if (memberEntity != null) {
             return R.ok().setData(memberEntity);
         } else {
             return R.error(BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getCode(),BizCodeEnum.LOGIN_ACCOUNT_PASSWORD_INVALID.getMsg());
         }
     }
+
 
     /**
      * 列表
@@ -86,8 +107,8 @@ public class MemberController {
     @RequestMapping("/list")
     //@RequiresPermissions("member:member:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = memberService.queryPage(params);
 
+        PageUtils page = memberService.queryPage(params);
         return R.ok().put("page", page);
     }
 
@@ -98,8 +119,8 @@ public class MemberController {
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:member:info")
     public R info(@PathVariable("id") Long id){
-		MemberEntity member = memberService.getById(id);
 
+		MemberEntity member = memberService.getById(id);
         return R.ok().put("member", member);
     }
 
@@ -109,8 +130,8 @@ public class MemberController {
     @RequestMapping("/save")
     //@RequiresPermissions("member:member:save")
     public R save(@RequestBody MemberEntity member){
-		memberService.save(member);
 
+		memberService.save(member);
         return R.ok();
     }
 
@@ -120,8 +141,8 @@ public class MemberController {
     @RequestMapping("/update")
     //@RequiresPermissions("member:member:update")
     public R update(@RequestBody MemberEntity member){
-		memberService.updateById(member);
 
+		memberService.updateById(member);
         return R.ok();
     }
 
@@ -131,9 +152,8 @@ public class MemberController {
     @RequestMapping("/delete")
     //@RequiresPermissions("member:member:delete")
     public R delete(@RequestBody Long[] ids){
-		memberService.removeByIds(Arrays.asList(ids));
 
+		memberService.removeByIds(Arrays.asList(ids));
         return R.ok();
     }
-
 }

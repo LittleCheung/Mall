@@ -6,7 +6,8 @@ import java.util.List;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class WareSkuLockVo {
@@ -15,7 +16,4 @@ public class WareSkuLockVo {
 
     /** 需要锁住的所有库存信息 **/
     private List<OrderItemVo> locks;
-
-
-
 }

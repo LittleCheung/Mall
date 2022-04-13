@@ -1,7 +1,7 @@
 package com.mall.common.constant;
 
 /**
- * 权限服务常量类
+ * 认证服务常量类
  * @author littlecheung
  */
 public class AuthServerConstant {

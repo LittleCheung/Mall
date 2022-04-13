@@ -9,12 +9,13 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 /**
  * 认证服务模块
  * @author littlecheung
+ *
+ * “@EnableRedisHttpSession”：整合redis作为session存储
  */
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableRedisHttpSession
-
 public class AuthServerApplication {
 
     public static void main(String[] args) {
@@ -23,9 +24,7 @@ public class AuthServerApplication {
 }
 
 /**
- * 注意：整个redis作为session存储
- *
- * spring-session核心原理
+ * spring-session核心原理：
  * 1、EnableRedisHttpSession 导入RedisHttpSessionConfiguration配置
  *   1)给容器中添加了一个组件 SessionRepository ==》RedisOperationsSessionRepository/RedisIndexedSessionRepository ==？redis操作session ,实现session的增删改查
  * 2、SessionRepositoryFilter==》Filter :session存储过滤器，每个请求过来必须经过filter
@@ -46,7 +45,6 @@ public class AuthServerApplication {
  *         } finally {
  *             wrappedRequest.commitSession();
  *         }
- *
  *     }
  *     自动延期：redis中的数据也是有过期时间的
  */

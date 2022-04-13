@@ -14,7 +14,9 @@ public class SocialUser {
     private String remind_in;
 
     private long expires_in;
-
+    /**
+     * 用户唯一标识
+     */
     private String uid;
 
     private String isRealName;

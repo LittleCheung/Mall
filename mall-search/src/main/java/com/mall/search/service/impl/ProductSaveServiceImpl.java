@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * 商品信息保存到Elasticsearch
  * @author littlecheung
  */
 @Service
@@ -29,27 +29,36 @@ public class ProductSaveServiceImpl implements ProductSaveService {
     @Autowired
     RestHighLevelClient restHighLevelClient;
 
+    /**
+     * 保存商品信息到ES
+     * @param skuEsModels
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean productStatusUp(List<SkuEsModel> skuEsModels) throws Exception {
-        // 保存到es
-        // 1 给es中建立索引，product
+        // 1 先在es中建立索引，product，建立映射关系
+
+
         BulkRequest bulkRequest = new BulkRequest();
-        // 1 构造保存请求
+        // 构造保存请求
         for (SkuEsModel model : skuEsModels) {
             IndexRequest indexRequest = new IndexRequest(EsConstant.PRODUCT_INDEX);
             indexRequest.id(model.getSkuId().toString());
-            String s = JSON.toJSONString(model);
-            indexRequest.source(s, XContentType.JSON);
+            String str = JSON.toJSONString(model);
+            indexRequest.source(str, XContentType.JSON);
             bulkRequest.add(indexRequest);
         }
+        //2 es中批量保存这些数据
         BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, ElasticSearchConfig.COMMON_OPTIONS);
-        // TODO 如果批量错误
+
+        // TODO 是否出现批量错误
         boolean b = bulk.hasFailures();
         List<String> collect = Arrays.stream(bulk.getItems()).map(item -> {
             return item.getId();
         }).collect(Collectors.toList());
-        log.info("商品上架完成,{},返回数据,{}",collect,bulk.toString());
 
+        log.info("商品上架完成: {}, 返回数据: {}", collect, bulk);
         return  b;
     }
 }

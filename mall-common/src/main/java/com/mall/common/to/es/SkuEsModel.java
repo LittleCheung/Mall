@@ -42,6 +42,7 @@ public class SkuEsModel {
 
     @Data
     public static class Attrs{
+
         private Long attrId;
 
         private String attrName;

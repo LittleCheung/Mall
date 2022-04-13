@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 会员信息实体
+ * 会员信息实体（实现序列化接口）
  * @author littlecheung
  */
 @ToString

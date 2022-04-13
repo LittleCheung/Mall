@@ -20,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("member/memberreceiveaddress")
 public class MemberReceiveAddressController {
+
     @Autowired
     private MemberReceiveAddressService memberReceiveAddressService;
 
@@ -33,7 +34,6 @@ public class MemberReceiveAddressController {
     public List<MemberReceiveAddressEntity> getAddress(@PathVariable("memberId") Long memberId) {
 
         List<MemberReceiveAddressEntity> addressList = memberReceiveAddressService.getAddress(memberId);
-
         return addressList;
     }
 

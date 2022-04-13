@@ -12,12 +12,10 @@ import com.mall.member.vo.MemberUserRegisterVo;
 import java.util.Map;
 
 /**
- * 会员
+ * 会员相关功能
  * @author littleCheung
  */
 public interface MemberService extends IService<MemberEntity> {
-
-    PageUtils queryPage(Map<String, Object> params);
 
     /**
      * 用户注册
@@ -26,7 +24,7 @@ public interface MemberService extends IService<MemberEntity> {
     void register(MemberUserRegisterVo vo);
 
     /**
-     * 判断邮箱是否重复
+     * 判断手机号是否重复
      * @param phone
      * @return
      */
@@ -47,17 +45,21 @@ public interface MemberService extends IService<MemberEntity> {
     MemberEntity login(MemberUserLoginVo vo);
 
     /**
-     * 社交用户的登录
+     * 社交用户登录
      * @param socialUser
      * @return
+     * @throws Exception
      */
-    MemberEntity login(SocialUser socialUser) throws Exception;
+    MemberEntity oauth2login(SocialUser socialUser) throws Exception;
 
     /**
      * 微信登录
      * @param accessTokenInfo
      * @return
      */
-    MemberEntity login(String accessTokenInfo);
+    MemberEntity wxlogin(String accessTokenInfo);
+
+
+    PageUtils queryPage(Map<String, Object> params);
 }
 

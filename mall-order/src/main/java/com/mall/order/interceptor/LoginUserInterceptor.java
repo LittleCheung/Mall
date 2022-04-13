@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import static com.mall.common.constant.AuthServerConstant.SESSION_LOGIN_KEY;
 
 /**
- * 登录用户拦截器
+ * 订单登录拦截器
  * @author littlecheung
  */
 @Component
@@ -21,6 +21,14 @@ public class LoginUserInterceptor implements HandlerInterceptor {
 
     public static ThreadLocal<MemberRespVo> loginUser = new ThreadLocal<>();
 
+    /**
+     * 前置拦截
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -38,26 +46,44 @@ public class LoginUserInterceptor implements HandlerInterceptor {
         if (attribute != null) {
             //把登录后用户的信息放在ThreadLocal里面进行保存
             loginUser.set(attribute);
-
             return true;
         } else {
-            //未登录，返回登录页面
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println("<script>alert('请先进行登录，再进行后续操作！');location.href='http://auth.gulimall.com/login.html'</script>");
-            // session.setAttribute("msg", "请先进行登录");
-            // response.sendRedirect("http://auth.gulimall.com/login.html");
+            //未登录先返回登录页面
+            request.getSession().setAttribute("msg", "请先进行登录");
+            response.sendRedirect("http://auth.gulimall.com/login.html");
             return false;
         }
     }
 
+    /**
+     * 后置拦截
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request,
+                           HttpServletResponse response,
+                           Object handler,
+                           ModelAndView modelAndView) throws Exception {
 
     }
 
+    /**
+     * 页面渲染后拦截
+     * @param request
+     * @param response
+     * @param handler
+     * @param ex
+     * @throws Exception
+     */
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request,
+                                HttpServletResponse response,
+                                Object handler,
+                                Exception ex) throws Exception {
 
     }
 }

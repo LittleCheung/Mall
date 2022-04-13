@@ -1,4 +1,4 @@
-package com.mall.order.to;
+package com.mall.order.vo;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- *
+ * spu信息实体
  * @author littlecheung
  */
 @Data

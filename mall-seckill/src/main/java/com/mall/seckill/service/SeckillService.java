@@ -16,6 +16,10 @@ public interface SeckillService {
      */
     void uploadSeckillSkuLatest3Days();
 
+    /**
+     * 当前时间可以参与秒杀的商品信息
+     * @return
+     */
     List<SeckillSkuRedisTo> getCurrentSeckillSkus();
 
     /**
@@ -23,7 +27,7 @@ public interface SeckillService {
      * @param skuId
      * @return
      */
-    SeckillSkuRedisTo getSkuSeckilInfo(Long skuId);
+    SeckillSkuRedisTo getSkuSeckillInfo(Long skuId);
 
     /**
      * 当前商品进行秒杀（秒杀开始）

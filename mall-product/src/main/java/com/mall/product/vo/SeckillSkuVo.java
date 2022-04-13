@@ -39,14 +39,17 @@ public class SeckillSkuVo {
      * 排序
      */
     private Integer seckillSort;
-
-    //当前商品秒杀的开始时间
+    /**
+     * 当前商品秒杀的开始时间
+     */
     private Long startTime;
-
-    //当前商品秒杀的结束时间
+    /**
+     * 当前商品秒杀的结束时间
+     */
     private Long endTime;
-
-    //当前商品秒杀的随机码
+    /**
+     * 当前商品秒杀的随机码
+     */
     private String randomCode;
 
 }

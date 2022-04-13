@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /**
- *
+ * 秒杀模块网络拦截器相关配置，进行登录检查
  * @author littlecheung
  */
 @Configuration

@@ -8,7 +8,7 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
- *
+ * session的cookie序列化器
  * @author littlecheung
  */
 @Configuration

@@ -4,7 +4,8 @@ import lombok.Data;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class PurchaseItemDoneVo {

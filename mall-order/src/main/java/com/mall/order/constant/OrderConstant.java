@@ -1,7 +1,7 @@
 package com.mall.order.constant;
 
 /**
- * 订单常量类
+ * 订单常量类：原子令牌
  * @author littlecheung
  */
 public class OrderConstant {

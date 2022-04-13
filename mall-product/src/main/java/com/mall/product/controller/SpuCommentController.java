@@ -24,6 +24,7 @@ import com.mall.product.service.SpuCommentService;
 @RestController
 @RequestMapping("product/spucomment")
 public class SpuCommentController {
+
     @Autowired
     private SpuCommentService spuCommentService;
 

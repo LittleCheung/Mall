@@ -27,13 +27,16 @@ public class MemberReceiveAddressServiceImpl extends ServiceImpl<MemberReceiveAd
         return new PageUtils(page);
     }
 
+    /**
+     * 根据会员id查询会员的所有地址列表
+     * @param memberId
+     * @return
+     */
     @Override
     public List<MemberReceiveAddressEntity> getAddress(Long memberId) {
 
         List<MemberReceiveAddressEntity> addressList = this.baseMapper.selectList
                 (new QueryWrapper<MemberReceiveAddressEntity>().eq("member_id", memberId));
-
         return addressList;
     }
-
 }

@@ -10,16 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * 秒杀商品定时上架
- *  每天晚上3点，上架最近三天需要三天秒杀的商品
- *  当天00:00:00 - 23:59:59
- *  明天00:00:00 - 23:59:59
- *  后天00:00:00 - 23:59:59
- */
-/**
- *
  * @author littlecheung
  */
 @Slf4j
@@ -32,17 +24,17 @@ public class SeckillScheduled {
     @Autowired
     private RedissonClient redissonClient;
 
-    //秒杀商品上架功能的锁
+    /**
+     * 秒杀商品上架功能的锁
+     */
     private final String upload_lock = "seckill:upload:lock";
 
     //TODO 保证幂等性问题
-    // @Scheduled(cron = "*/5 * * * * ? ")
     @Scheduled(cron = "0 0 1/1 * * ? ")
     public void uploadSeckillSkuLatest3Days() {
-        //1、重复上架无需处理
-        log.info("上架秒杀的商品...");
 
-        //分布式锁
+        log.info("上架秒杀的商品");
+        //得到分布式锁
         RLock lock = redissonClient.getLock(upload_lock);
         try {
             //加锁
@@ -51,6 +43,7 @@ public class SeckillScheduled {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            //解锁
             lock.unlock();
         }
     }

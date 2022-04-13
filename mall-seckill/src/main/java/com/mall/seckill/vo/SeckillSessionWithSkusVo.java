@@ -35,5 +35,4 @@ public class SeckillSessionWithSkusVo {
     private Date createTime;
 
     private List<SeckillSkuVo> relationSkus;
-
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- *
+ * 库存工作单详情表
  * @author littlecheung
  */
 @NoArgsConstructor

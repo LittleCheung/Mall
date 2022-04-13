@@ -1,7 +1,6 @@
 package com.mall.order.vo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,29 +8,25 @@ import java.util.Map;
 
 
 /**
- *
+ * 订单确认页需要用到的数据实体
  * @author littlecheung
  */
+@Data
 public class OrderConfirmVo {
 
-    @Getter @Setter
-    /** 会员收获地址列表 **/
+    /** 会员收货地址列表 **/
     List<MemberAddressVo> memberAddressVos;
 
-    @Getter @Setter
     /** 所有选中的购物项 **/
     List<OrderItemVo> items;
 
     /** 发票记录 **/
-    @Getter @Setter
     /** 优惠券（会员积分） **/
     private Integer integration;
 
     /** 防止重复提交的令牌 **/
-    @Getter @Setter
     private String orderToken;
 
-    @Getter @Setter
     Map<Long,Boolean> stocks;
 
     public Integer getCount() {
@@ -46,7 +41,6 @@ public class OrderConfirmVo {
 
 
     /** 订单总额 **/
-    //BigDecimal total;
     //计算订单总额
     public BigDecimal getTotal() {
         BigDecimal totalNum = BigDecimal.ZERO;
@@ -63,7 +57,7 @@ public class OrderConfirmVo {
 
 
     /** 应付价格 **/
-    //BigDecimal payPrice;
+    //计算应付价格
     public BigDecimal getPayPrice() {
         return getTotal();
     }

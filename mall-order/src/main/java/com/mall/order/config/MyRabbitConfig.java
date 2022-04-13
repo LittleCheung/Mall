@@ -1,77 +1,150 @@
 package com.mall.order.config;
 
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+
+import java.util.HashMap;
+
 
 
 /**
- *
+ * 订单模块订单服务RabbitMQ配置类
  * @author littlecheung
  */
 @Configuration
 public class MyRabbitConfig {
 
-    private RabbitTemplate rabbitTemplate;
 
-    @Primary
-    @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        this.rabbitTemplate = rabbitTemplate;
-        rabbitTemplate.setMessageConverter(messageConverter());
-        initRabbitTemplate();
-        return rabbitTemplate;
-    }
-
-    @Bean
-    public MessageConverter messageConverter() {
-        return new Jackson2JsonMessageConverter();
+    /**
+     * 延迟队列（死信队列）
+     *
+     * @return
+     */@Bean
+    public Queue orderDelayQueue() {
+        /*
+            String name,  队列名字
+            boolean durable,  是否持久化
+            boolean exclusive,  是否排他
+            boolean autoDelete, 是否自动删除
+            Map<String, Object> arguments, 自定义属性
+         */
+        HashMap<String, Object> arguments = new HashMap<>();
+        //设置死信路由
+        arguments.put("x-dead-letter-exchange", "order-event-exchange");
+        //设置死信路由键
+        arguments.put("x-dead-letter-routing-key", "order.release.order");
+        //消息过期时间设置为1分钟
+        arguments.put("x-message-ttl", 60000);
+        Queue queue = new Queue("order.delay.queue", true, false, false, arguments);
+        return queue;
     }
 
     /**
-     * 定制RabbitTemplate
-     * 1、服务收到消息就会回调
-     *      1、spring.rabbitmq.publisher-confirms: true
-     *      2、设置确认回调
-     * 2、消息正确抵达队列就会进行回调
-     *      1、spring.rabbitmq.publisher-returns: true
-     *         spring.rabbitmq.template.mandatory: true
-     *      2、设置确认回调ReturnCallback
+     * 普通队列
      *
-     * 3、消费端确认(保证每个消息都被正确消费，此时才可以broker删除这个消息)
-     *
+     * @return
      */
-    // @PostConstruct  //MyRabbitConfig对象创建完成以后，执行这个方法
-    public void initRabbitTemplate() {
+    @Bean
+    public Queue orderReleaseQueue() {
 
-        /**
-         * 1、只要消息抵达Broker就ack=true
-         * correlationData：当前消息的唯一关联数据(这个是消息的唯一id)
-         * ack：消息是否成功收到
-         * cause：失败的原因
-         */
-        //设置确认回调
-        rabbitTemplate.setConfirmCallback((correlationData,ack,cause) -> {
-            System.out.println("confirm...correlationData["+correlationData+"]==>ack:["+ack+"]==>cause:["+cause+"]");
-        });
+        Queue queue = new Queue("order.release.order.queue", true, false, false);
+        return queue;
+    }
+
+    /**
+     * 交换机
+     *
+     * @return
+     */
+    @Bean
+    public Exchange orderEventExchange() {
+
+        return new TopicExchange("order-event-exchange", true, false);
+    }
 
 
-        /**
-         * 只要消息没有投递给指定的队列，就触发这个失败回调
-         * message：投递失败的消息详细信息
-         * replyCode：回复的状态码
-         * replyText：回复的文本内容
-         * exchange：当时这个消息发给哪个交换机
-         * routingKey：当时这个消息用哪个路邮键
-         */
-        rabbitTemplate.setReturnCallback((message,replyCode,replyText,exchange,routingKey) -> {
-            System.out.println("Fail Message["+message+"]==>replyCode["+replyCode+"]" +
-                    "==>replyText["+replyText+"]==>exchange["+exchange+"]==>routingKey["+routingKey+"]");
-        });
+    /**
+     * 与死信队列绑定
+     *
+     * @return
+     */
+    @Bean
+    public Binding orderCreateBinding() {
+        /*
+         * String destination, 目的地（队列名或者交换机名字）
+         * DestinationType destinationType, 目的地类型（Queue、Exchange）
+         * String exchange, 交换机
+         * String routingKey, 路由键
+         * Map<String, Object> arguments, 自定义属性
+         * */
+        return new Binding("order.delay.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.create.order",
+                null);
+    }
+
+
+    /**
+     * 与普通队列绑定
+     *
+     * @return
+     */
+    @Bean
+    public Binding orderReleaseBinding() {
+
+        return new Binding("order.release.order.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.release.order",
+                null);
+    }
+
+
+    /**
+     * 订单释放直接和库存释放进行绑定
+     * @return
+     */
+    @Bean
+    public Binding orderReleaseOtherBinding() {
+
+        return new Binding("stock.release.stock.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.release.other.#",
+                null);
+    }
+
+
+    /**
+     * 商品秒杀队列
+     * @return
+     */
+    @Bean
+    public Queue orderSecKillOrderQueue() {
+
+        Queue queue = new Queue("order.seckill.order.queue", true, false, false);
+        return queue;
+    }
+
+
+    /**
+     * 与秒杀队列进行绑定
+     * @return
+     */
+    @Bean
+    public Binding orderSecKillOrderQueueBinding() {
+
+        Binding binding = new Binding(
+                "order.seckill.order.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.seckill.order",
+                null);
+        return binding;
     }
 }

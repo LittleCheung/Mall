@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class OrderVo {

@@ -7,7 +7,11 @@ import com.mall.common.utils.PageUtils;
 import com.mall.ware.entity.WareSkuEntity;
 import com.mall.ware.vo.SkuHasStockVo;
 import com.mall.ware.vo.WareSkuLockVo;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -46,12 +50,12 @@ public interface WareSkuService extends IService<WareSkuEntity> {
      * 解锁库存
      * @param to
      */
-    void unlockStock(StockLockedTo to);
+    void unlockStock(StockLockedTo to) throws IOException;
 
     /**
      * 解锁订单
      * @param orderTo
      */
-    void unlockStock(OrderTo orderTo);
+    void unlockStockOrder(OrderTo orderTo);
 }
 

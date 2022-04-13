@@ -26,7 +26,7 @@ public class OrderWebController {
     private OrderService orderService;
 
     /**
-     * 去结算确认页
+     * 跳转到结算确认页
      * @param model
      * @param request
      * @return
@@ -37,10 +37,8 @@ public class OrderWebController {
     public String toTrade(Model model, HttpServletRequest request) throws ExecutionException, InterruptedException {
 
         OrderConfirmVo confirmVo = orderService.confirmOrder();
-
         model.addAttribute("confirmOrderData",confirmVo);
         //展示订单确认的数据
-
         return "confirm";
     }
 
@@ -56,17 +54,18 @@ public class OrderWebController {
         try {
             SubmitOrderResponseVo responseVo = orderService.submitOrder(vo);
             //下单成功来到支付选择页
-            //下单失败回到订单确认页重新确定订单信息
             if (responseVo.getCode() == 0) {
-                //成功
+                //下单成功来到支付选择页面
                 model.addAttribute("submitOrderResp",responseVo);
                 return "pay";
             } else {
+                //下单失败回到订单确认页重新确定订单信息
                 String msg = "下单失败";
                 switch (responseVo.getCode()) {
                     case 1: msg += "令牌订单信息过期，请刷新再次提交"; break;
                     case 2: msg += "订单商品价格发生变化，请确认后再次提交"; break;
                     case 3: msg += "库存锁定失败，商品库存不足"; break;
+                    default:break;
                 }
                 attributes.addFlashAttribute("msg",msg);
                 return "redirect:http://order.gulimall.com/toTrade";
@@ -79,5 +78,4 @@ public class OrderWebController {
             return "redirect:http://order.gulimall.com/toTrade";
         }
     }
-
 }

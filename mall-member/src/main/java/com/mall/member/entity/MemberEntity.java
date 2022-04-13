@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 会员
+ * 会员实体类
  * @author littlecheung
  */
 @Data
@@ -91,11 +91,17 @@ public class MemberEntity implements Serializable {
 	 * 注册时间
 	 */
 	private Date createTime;
-
+	/**
+	 * 社交用户的唯一id
+	 */
 	private String socialUid;
-
+	/**
+	 * 社交用户的访问令牌
+	 */
 	private String accessToken;
-
+	/**
+	 * 访问令牌的过期时间
+	 */
 	private Long expiresIn;
 
 }

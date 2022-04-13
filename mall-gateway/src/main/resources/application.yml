@@ -71,7 +71,7 @@ spring:
         - id: mall_cart_route
           uri: lb://mall-cart
           predicates:
-            - Host=cart.gulimall.com
+            - Host=cart.mall.com
 
 
         - id: mall_order_route

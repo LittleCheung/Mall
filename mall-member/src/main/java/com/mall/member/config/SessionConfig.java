@@ -8,7 +8,7 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
- * Session相关配置类
+ * Session的cookie序列化器
  * @author littlecheung
  */
 @Configuration
@@ -18,11 +18,8 @@ public class SessionConfig {
     public CookieSerializer cookieSerializer() {
 
         DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
-
-        //放大作用域
         cookieSerializer.setDomainName("mall.com");
         cookieSerializer.setCookieName("MALLSESSION");
-
         return cookieSerializer;
     }
 
@@ -31,5 +28,4 @@ public class SessionConfig {
     public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
         return new GenericJackson2JsonRedisSerializer();
     }
-
 }

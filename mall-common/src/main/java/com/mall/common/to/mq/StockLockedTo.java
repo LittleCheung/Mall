@@ -3,7 +3,7 @@ package com.mall.common.to.mq;
 import lombok.Data;
 
 /**
- * 秒杀工作单实体
+ * 库存锁定成功发送实体
  * @author littlecheung
  */
 @Data

@@ -26,9 +26,7 @@ public class MyRedissonConfig {
         //1、创建配置
         Config config = new Config();
         config.useSingleServer().setAddress("redis://192.168.11.129:6379");
-
         //2、根据Config创建出RedissonClient实例
-        //Redis url should start with redis:// or rediss://
         RedissonClient redissonClient = Redisson.create(config);
         return redissonClient;
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * 购物车实体类
+ * 整个购物车实体类
  * @author littlecheung
  */
 public class CartVo {
@@ -16,22 +16,18 @@ public class CartVo {
      * 购物车子项信息
      */
     List<CartItemVo> items;
-
     /**
      * 商品数量
      */
     private Integer countNum;
-
     /**
      * 商品类型数量
      */
     private Integer countType;
-
     /**
      * 商品总价
      */
     private BigDecimal totalAmount;
-
     /**
      * 减免价格
      */
@@ -79,6 +75,7 @@ public class CartVo {
         // 计算优惠后的价格
         return amount.subtract(getReduce());
     }
+
 
     public BigDecimal getReduce() {
         return reduce;

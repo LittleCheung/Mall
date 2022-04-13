@@ -8,14 +8,16 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- *
+ * 订单创建好后的实体
  * @author littlecheung
  */
 @Data
 public class OrderCreateTo {
 
+    /** 订单 **/
     private OrderEntity order;
 
+    /** 订单项 **/
     private List<OrderItemEntity> orderItems;
 
     /** 订单计算的应付价格 **/

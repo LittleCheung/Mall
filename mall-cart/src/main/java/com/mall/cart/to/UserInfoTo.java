@@ -10,12 +10,16 @@ import lombok.Data;
 @Data
 public class UserInfoTo {
 
-    private Long userId;
-
-    private String userKey;
-
     /**
-     * 是否临时用户
+     * 用户唯一标识
+     */
+    private Long userId;
+    /**
+     * 浏览器端用户身份标识
+     */
+    private String userKey;
+    /**
+     * 默认设置为不是临时用户
      */
     private Boolean tempUser = false;
 

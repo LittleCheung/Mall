@@ -17,7 +17,7 @@ public interface ProductFeignService {
      * @param skuId
      * @return
      */
-    @GetMapping(value = "/product/spuinfo/skuId/{skuId}")
+    @GetMapping(value = "/product/spuinfo/skuId/{id}")
     public R getSpuInfoBySkuId(@PathVariable("skuId") Long skuId);
 
 }

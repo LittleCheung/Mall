@@ -19,7 +19,7 @@ import static com.mall.common.constant.CartConstant.TEMP_USER_COOKIE_TIMEOUT;
 
 
 /**
- * 购物车模块拦截器
+ * 购物车模块拦截器：在执行目标方法之前先判断用户的登录状态，并封装传递给controller目标请求
  * @author littlecheung
  */
 public class CartInterceptor implements HandlerInterceptor {
@@ -42,31 +42,27 @@ public class CartInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         //获得当前登录用户的信息
         MemberRespVo memberResponseVo = (MemberRespVo) session.getAttribute(SESSION_LOGIN_KEY);
-
         if (memberResponseVo != null) {
-            //用户登录了
+            //用户已经登录
             userInfoTo.setUserId(memberResponseVo.getId());
         }
 
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
-                //user-key
                 String name = cookie.getName();
                 if (name.equals(TEMP_USER_COOKIE_NAME)) {
                     userInfoTo.setUserKey(cookie.getValue());
-                    //标记为已是临时用户
+                    //标记为是临时用户
                     userInfoTo.setTempUser(true);
                 }
             }
         }
-
-        //如果没有临时用户一定分配一个临时用户
+        //如果没有临时用户自定义分配一个临时用户
         if (StringUtils.isEmpty(userInfoTo.getUserKey())) {
             String uuid = UUID.randomUUID().toString();
             userInfoTo.setUserKey(uuid);
         }
-
         //目标方法执行之前
         toThreadLocal.set(userInfoTo);
         return true;
@@ -86,22 +82,31 @@ public class CartInterceptor implements HandlerInterceptor {
 
         //获取当前用户的值
         UserInfoTo userInfoTo = toThreadLocal.get();
-
-        //如果没有临时用户一定保存一个临时用户
+        //如果没有临时用户自定义分配一个临时用户
         if (!userInfoTo.getTempUser()) {
             //创建一个cookie
             Cookie cookie = new Cookie(TEMP_USER_COOKIE_NAME, userInfoTo.getUserKey());
             //扩大作用域
-            cookie.setDomain("gulimall.com");
+            cookie.setDomain("mall.com");
             //设置过期时间
             cookie.setMaxAge(TEMP_USER_COOKIE_TIMEOUT);
             response.addCookie(cookie);
         }
-
     }
 
+    /**
+     * 页面渲染之后
+     * @param request
+     * @param response
+     * @param handler
+     * @param ex
+     * @throws Exception
+     */
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request,
+                                HttpServletResponse response,
+                                Object handler,
+                                Exception ex) throws Exception {
 
     }
 }

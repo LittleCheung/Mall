@@ -10,12 +10,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
     /**
-     * 视图映射
+     * 视图映射，对应一个请求跳转一个页面
      * @param registry
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+
+//        registry.addViewController("/login.html").setViewName("login");
         registry.addViewController("/reg.html").setViewName("reg");
     }
 }

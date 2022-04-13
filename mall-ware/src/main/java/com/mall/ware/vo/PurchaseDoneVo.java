@@ -7,7 +7,8 @@ import java.util.List;
 
 
 /**
- * @author yaoxinjia
+ *
+ * @author littlecheung
  */
 @Data
 public class PurchaseDoneVo {
