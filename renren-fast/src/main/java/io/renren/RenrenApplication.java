@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * 后端脚手架工程启动类
+ * 后台管理系统脚手架工程启动类
  * @author littlecheung
  */
 @SpringBootApplication
