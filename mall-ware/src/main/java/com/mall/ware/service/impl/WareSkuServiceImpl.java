@@ -89,7 +89,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
 
     /**
-     * 新增库存
+     * 成功采购的采购项进行入库
      * @param skuId
      * @param wareId
      * @param skuNum
@@ -98,34 +98,32 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
     @Override
     public void addStock(Long skuId, Long wareId, Integer skuNum) {
 
-        //1、判断如果没有这个库存记录新增
         List<WareSkuEntity> wareSkuEntities = wareSkuDao.selectList(
                 new QueryWrapper<WareSkuEntity>().eq("sku_id", skuId).eq("ware_id", wareId));
-
+        //判断是否还没有这个库存记录新增
         if (wareSkuEntities == null || wareSkuEntities.size() == 0) {
             WareSkuEntity wareSkuEntity = new WareSkuEntity();
             wareSkuEntity.setSkuId(skuId);
             wareSkuEntity.setStock(skuNum);
             wareSkuEntity.setWareId(wareId);
             wareSkuEntity.setStockLocked(0);
+
             //TODO 远程查询sku的名字，如果失败整个事务无需回滚
-            //1、自己catch异常
             try{
                 R info = productFeignService.info(skuId);
                 Map<String,Object> data = (Map<String, Object>) info.get("skuInfo");
                 if (info.getCode() == 0) {
                     wareSkuEntity.setSkuName((String) data.get("skuName"));
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
             //添加库存信息
             wareSkuDao.insert(wareSkuEntity);
         } else {
-            //修改库存信息
+            //更新库存信息
             wareSkuDao.addStock(skuId,wareId,skuNum);
         }
-
     }
 
 

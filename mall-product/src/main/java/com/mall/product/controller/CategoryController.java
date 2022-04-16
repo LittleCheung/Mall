@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * 商品三级分类
+ * 处理商品三级分类相关请求
  * @author littlecheung
  */
 @RestController

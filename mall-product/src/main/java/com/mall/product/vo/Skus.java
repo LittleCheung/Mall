@@ -41,5 +41,4 @@ public class Skus {
     private int priceStatus;
 
     private List<MemberPrice> memberPrice;
-
 }

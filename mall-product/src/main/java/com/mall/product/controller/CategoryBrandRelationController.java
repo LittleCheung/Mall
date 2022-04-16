@@ -23,41 +23,39 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("product/categorybrandrelation")
 public class CategoryBrandRelationController {
+
     @Autowired
     private CategoryBrandRelationService categoryBrandRelationService;
 
 
     /**
      * 获取当前品牌关联的所有分类列表
-     * 列表
+     * @param brandId
+     * @return
      */
     @GetMapping("/catelog/list")
     public R cateloglist(@RequestParam("brandId") Long brandId){
-        List<CategoryBrandRelationEntity> data = categoryBrandRelationService.list(new QueryWrapper<CategoryBrandRelationEntity>().eq("brand_id",brandId));
+
+        List<CategoryBrandRelationEntity> data = categoryBrandRelationService.list(new QueryWrapper<CategoryBrandRelationEntity>()
+                .eq("brand_id",brandId));
         return R.ok().put("data", data);
     }
 
     /**
-     *
+     * 获取分类关联的所有品牌
      * @param catId
      * @return
-     *
-     * 1 Controller: 处理请求，接受和校验数据
-     *
-     * 2 Service接受controller传来的数据，进行业务处理，封装成页面指定的vo
      */
-
     @GetMapping("/brands/list")
     public R relationBrandsList(@RequestParam(value = "catId",required = true)Long catId) {
-        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
 
+        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
         List<BrandVo> collect = vos.stream().map((item) -> {
             BrandVo brandVo = new BrandVo();
             brandVo.setBrandId(item.getBrandId());
             brandVo.setBrandName(item.getName());
             return brandVo;
         }).collect(Collectors.toList());
-
         return R.ok().put("data", collect);
     }
 

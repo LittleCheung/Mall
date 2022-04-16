@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- *
+ * 采购完成实体
  * @author littlecheung
  */
 @Data

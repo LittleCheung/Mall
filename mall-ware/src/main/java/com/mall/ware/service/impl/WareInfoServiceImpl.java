@@ -30,26 +30,26 @@ public class WareInfoServiceImpl extends ServiceImpl<WareInfoDao, WareInfoEntity
     @Autowired
     private MemberFeignService memberFeignService;
 
+    /**
+     * 分页查询获取仓库列表
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
         QueryWrapper<WareInfoEntity> queryWrapper = new QueryWrapper<>();
-
         String key = (String) params.get("key");
-
         if (!StringUtils.isEmpty(key)) {
             queryWrapper.eq("id",key)
                     .or().like("name",key)
                     .or().like("address",key)
                     .or().like("areacode",key);
         }
-
-
         IPage<WareInfoEntity> page = this.page(
                 new Query<WareInfoEntity>().getPage(params),
                 queryWrapper
         );
-
         return new PageUtils(page);
     }
 
@@ -65,7 +65,6 @@ public class WareInfoServiceImpl extends ServiceImpl<WareInfoDao, WareInfoEntity
 
         //收获地址的详细信息
         R addrInfo = memberFeignService.info(addrId);
-
         MemberAddressVo memberAddressVo = addrInfo.getData("memberReceiveAddress",new TypeReference<MemberAddressVo>() {});
 
         if (memberAddressVo != null) {
@@ -82,11 +81,4 @@ public class WareInfoServiceImpl extends ServiceImpl<WareInfoDao, WareInfoEntity
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        String phone = "1558022051";
-        String fare = phone.substring(phone.length() - 10, phone.length()-8);
-        System.out.println(fare);
-    }
-
 }

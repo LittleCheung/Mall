@@ -66,7 +66,7 @@ public class CartServiceImpl implements CartService {
             //没有就添加新商品到购物车
             CartItemVo cartItemVo = new CartItemVo();
 
-            //开启第一个异步任务
+            //获取sku信息的异步任务
             CompletableFuture<Void> getSkuInfoFuture = CompletableFuture.runAsync(() -> {
                 //远程调用查询当前要添加商品的基本信息
                 R productSkuInfo = productFeignService.getInfo(skuId);
@@ -77,14 +77,12 @@ public class CartServiceImpl implements CartService {
                 cartItemVo.setPrice(skuInfo.getPrice());
                 cartItemVo.setCount(num);
             }, executor);
-
-            //开启第二个异步任务
+            //获取sku属性值的异步任务
             CompletableFuture<Void> getSkuAttrValuesFuture = CompletableFuture.runAsync(() -> {
                 //远程调用查询商品套餐属性信息
                 List<String> skuSaleAttrValues = productFeignService.getSkuSaleAttrValues(skuId);
                 cartItemVo.setSkuAttrValues(skuSaleAttrValues);
             }, executor);
-
             //等待所有的异步任务全部完成
             CompletableFuture.allOf(getSkuInfoFuture, getSkuAttrValuesFuture).get();
 
@@ -96,7 +94,6 @@ public class CartServiceImpl implements CartService {
             //购物车有此商品，只需要修改数量
             CartItemVo cartItemVo = JSON.parseObject(productRedisValue, CartItemVo.class);
             cartItemVo.setCount(cartItemVo.getCount() + num);
-
             //更新Redis中存储的数据
             String cartItemJson = JSON.toJSONString(cartItemVo);
             cartOps.put(skuId.toString(),cartItemJson);
@@ -112,10 +109,10 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     public CartItemVo getCartItem(Long skuId) {
+
         //获取当前购物车
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
         String redisValue = (String) cartOps.get(skuId.toString());
-
         //获取到购物车中具体购物项并返回
         CartItemVo cartItem = JSON.parseObject(redisValue, CartItemVo.class);
         return cartItem;
@@ -138,7 +135,6 @@ public class CartServiceImpl implements CartService {
         if (userInfoTo.getUserId() != null) {
             //登录后用户购物车的键
             String cartKey = CART_PREFIX + userInfoTo.getUserId();
-
             //临时用户购物车的键
             String temptCartKey = CART_PREFIX + userInfoTo.getUserKey();
             //获取临时购物车里中的所有购物项
@@ -152,7 +148,6 @@ public class CartServiceImpl implements CartService {
                 //清除临时购物车中的数据
                 clearCartInfo(temptCartKey);
             }
-
             //3、获取登录后的购物车数据【包含合并过来的临时购物车的数据和登录后购物车的数据】
             List<CartItemVo> cartItems = getCartItems(cartKey);
             cartVo.setItems(cartItems);
@@ -172,9 +167,9 @@ public class CartServiceImpl implements CartService {
      * @return
      */
     private BoundHashOperations<String, Object, Object> getCartOps() {
+
         //获取当前用户信息
         UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
-
         String cartKey = "";
         //用户已登录
         if (userInfoTo.getUserId() != null) {
@@ -186,7 +181,6 @@ public class CartServiceImpl implements CartService {
         }
         //操作Redis进行获取
         BoundHashOperations<String, Object, Object> operations = redisTemplate.boundHashOps(cartKey);
-
         return operations;
     }
 
@@ -200,7 +194,6 @@ public class CartServiceImpl implements CartService {
 
         BoundHashOperations<String, Object, Object> operations = redisTemplate.boundHashOps(cartKey);
         List<Object> values = operations.values();
-
         if (values != null && values.size() > 0) {
             List<CartItemVo> cartItems = values.stream().map((obj) -> {
                 String str = (String) obj;
@@ -236,9 +229,7 @@ public class CartServiceImpl implements CartService {
         cartItem.setCheck(check == 1 ? true : false);
         //序列化存入redis中，key为所选中的购物项id，value为购物项修改后的新值
         String redisValue = JSON.toJSONString(cartItem);
-
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
-
         cartOps.put(skuId.toString(),redisValue);
     }
 
@@ -255,7 +246,6 @@ public class CartServiceImpl implements CartService {
         CartItemVo cartItem = getCartItem(skuId);
         //修改购物项数量
         cartItem.setCount(num);
-
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
         String redisValue = JSON.toJSONString(cartItem);
         cartOps.put(skuId.toString(),redisValue);

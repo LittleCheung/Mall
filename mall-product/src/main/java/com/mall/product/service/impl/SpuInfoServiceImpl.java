@@ -74,6 +74,11 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Autowired
     SearchFeignService searchFeignService;
 
+    /**
+     * 简单分页查询
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
@@ -84,25 +89,32 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
+    /**
+     * 保存spu所有信息
+     * @param vo
+     *
+     * TODO 可以考虑使用Seata处理分布式事务
+     */
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void savaSpuInfo(SpuSaveVo vo) {
-        // 1 保存spu基本信息  pms_spu_info
+        //TODO 该方法代码过长可以考虑抽取出私有方法进行调用
+        //保存spu基本信息
         SpuInfoEntity infoEntity = new SpuInfoEntity();
         BeanUtils.copyProperties(vo,infoEntity);
         infoEntity.setCreateTime(new Date());
         infoEntity.setUpdateTime(new Date());
         this.saveBaseSpuInfo(infoEntity);
-        // 2 保存spu的描述信息 pms_spu_info_desc
+        //保存spu的描述信息
         List<String> decript = vo.getDecript();
         SpuInfoDescEntity descEntity = new SpuInfoDescEntity();
         descEntity.setSpuId(infoEntity.getId());
         descEntity.setDecript(String.join(",",decript));
         spuInfoDescService.savsSpuInfoDesc(descEntity);
-        // 3 保存spu的图片集  pms_spu_images
+        //保存spu的图片集
         List<String> images = vo.getImages();
         imagesService.saveImages(infoEntity.getId(),images);
-        // 4 保存spu的规格参数  pms_product_attr_value
+        //保存spu的规格参数
         List<BaseAttrs> baseAttrs = vo.getBaseAttrs();
         List<ProductAttrValueEntity> collect = baseAttrs.stream().map((attr) -> {
             ProductAttrValueEntity valueEntity = new ProductAttrValueEntity();
@@ -115,7 +127,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             return valueEntity;
         }).collect(Collectors.toList());
         attrValueService.saveProductAttr(collect);
-        // 5 保存spu的积分信息 gulimall_sms->sms_spu_bounds
+        //保存spu的积分信息
         Bounds bounds = vo.getBounds();
         SpuBoundTo spuBoundTo = new SpuBoundTo();
         BeanUtils.copyProperties(bounds,spuBoundTo);
@@ -124,8 +136,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         if (r.getCode() != 0) {
             log.error("远程保存spu积分信息失败");
         }
-        // 5 保存当前spu对应的所有sku信息
-
+        //保存当前spu对应的所有sku信息
         List<Skus> skus = vo.getSkus();
         if (skus != null && skus.size() > 0) {
             skus.forEach((item) -> {
@@ -135,6 +146,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                         defaultImg = image.getImgUrl();
                     }
                 }
+                // sku的基本信息
                 SkuInfoEntity skuInfoEntity = new SkuInfoEntity();
                 BeanUtils.copyProperties(item,skuInfoEntity);
                 skuInfoEntity.setBrandId(infoEntity.getBrandId());
@@ -142,10 +154,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 skuInfoEntity.setSaleCount(0L);
                 skuInfoEntity.setSpuId(infoEntity.getId());
                 skuInfoEntity.setSkuDefaultImg(defaultImg);
-                // 5.1 sku的基本信息 pms_sku_info
                 skuInfoService.saveSkuInfo(skuInfoEntity);
+                // sku的图片信息
                 Long skuId = skuInfoEntity.getSkuId();
-
                 List<SkuImagesEntity> imagesEntities = item.getImages().stream().map((img) -> {
                     SkuImagesEntity skuImagesEntity = new SkuImagesEntity();
                     skuImagesEntity.setSkuId(skuId);
@@ -153,26 +164,20 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                     skuImagesEntity.setDefaultImg(img.getDefaultImg());
                     return skuImagesEntity;
                 }).filter((entity) -> {
-                    // 返回true就是需要。false就是剔除
+                    //没有图片路径的就无需保存，返回true才表示需要保存
                     return !StringUtils.isEmpty(entity.getImgUrl());
                 }).collect(Collectors.toList());
-                // 5.2 sku的图片信息 pms_sku_images\
-
                 skuImagesService.saveBatch(imagesEntities);
-                // TODO 没有图片，路径的无需保存
-
+                // sku的销售属性信息
                 List<Attr> attr = item.getAttr();
                 List<SkuSaleAttrValueEntity> skuSaleAttrValueEntities = attr.stream().map((a) -> {
                     SkuSaleAttrValueEntity attrValueEntity = new SkuSaleAttrValueEntity();
                     BeanUtils.copyProperties(a, attrValueEntity);
                     attrValueEntity.setSkuId(skuId);
-
                     return attrValueEntity;
                 }).collect(Collectors.toList());
-                // 5.3 sku的销售属性信息 pms_sku_sale_attr_value
                 skuSaleAttrValueService.saveBatch(skuSaleAttrValueEntities);
-
-                // 5.4 sku的优惠、满减等信息：gulimall_sms->sms_sku_ladder\sms_sku_full_reduction\sms_member_price
+                // sku的优惠、满减等信息
                 SkuReductionTo skuReductionTo = new SkuReductionTo();
                 BeanUtils.copyProperties(item,skuReductionTo);
                 skuReductionTo.setSkuId(skuId);
@@ -186,14 +191,22 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         }
     }
 
+
     @Override
     public void saveBaseSpuInfo(SpuInfoEntity infoEntity) {
         this.baseMapper.insert(infoEntity);
     }
 
+    /**
+     * 条件分页查询spu信息
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPageByCondition(Map<String, Object> params) {
+
         QueryWrapper<SpuInfoEntity> wrapper = new QueryWrapper<>();
+        //模糊检索条件
         String key = (String) params.get("key");
         if (!StringUtils.isEmpty(key)) {
             wrapper.and((w)->{

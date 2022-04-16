@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 统一异常处理类
+ * 集中处理所有异常
  * @author littleCheung
  */
 @Slf4j
@@ -26,6 +26,7 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public R handleValidException(MethodArgumentNotValidException e) {
+
         log.error("数据校验出现问题{}, 异常类型: {}",e.getMessage(),e.getClass());
         BindingResult bindingResult = e.getBindingResult();
         Map<String, String> errorMap = new HashMap<>();
@@ -36,12 +37,13 @@ public class ExceptionControllerAdvice {
     }
 
     /**
-     * 模糊处理所有异常
+     * 模糊处理任意类型异常
      * @param throwable 全部异常
      * @return
      */
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable) {
+
         log.error("错误:", throwable);
         return R.error(BizCodeEnum.UNKNOWN_EXCEPTION.getCode(),BizCodeEnum.UNKNOWN_EXCEPTION.getMsg());
     }

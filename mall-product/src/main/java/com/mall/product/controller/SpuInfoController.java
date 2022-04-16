@@ -15,7 +15,7 @@ import com.mall.product.service.SpuInfoService;
 
 
 /**
- * spu信息
+ * 处理spu信息请求
  * @author littlecheung
  */
 @RestController

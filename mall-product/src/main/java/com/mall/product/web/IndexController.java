@@ -19,7 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 测试读写锁的作用
+ * 处理加锁相关请求
  * @author littlecheung
  */
 @Controller
@@ -38,27 +38,34 @@ public class IndexController {
     @GetMapping({"/", "/index.html"})
     public String indexPage(Model model) {
 
-        List<CategoryEntity> categoryEntities = categoryService.getLevel1Categorys();
+        List<CategoryEntity> categoryEntities = categoryService.getLevelCategorys();
         model.addAttribute("categorys", categoryEntities);
         return "index";
     }
 
+
     @ResponseBody
     @GetMapping("/index/catalog.json")
-    public Map<String, List<Catelog2Vo>> getCatalogJson() {
+    public Map<String, List<Catelog2Vo>> getCatalogJson() throws InterruptedException {
 
         Map<String, List<Catelog2Vo>> catalogJson = categoryService.getCatalogJson();
         return catalogJson;
     }
 
 
+
+
+    /**
+     * Redisson分布式锁测试
+     * @return
+     */
     @ResponseBody
     @GetMapping("/hello")
     public String hello() {
         // 1 获取一把锁，只要锁的名字一样就是同一把锁
         RLock lock = redisson.getLock("my-lock");
         // 2 加锁，阻塞式等待，默认加的锁都是30s
-        // 锁的自动续期: 如果业务超长，运行期间自动给锁续上新的30s。不用担心业务时间长，锁自动过期被删除
+        // TODO 锁的自动续期（看门狗机制）: 如果业务超长，运行期间自动给锁续上新的30s。不用担心业务时间长，锁自动过期被删除
         // 加锁的业务只要运行完成，就不会给当前锁续期，即使不手动解锁，锁默认在30s以后自动删除解锁
         lock.lock();
         // lock.lock(10, TimeUnit.SECONDS);  // 10s自动解锁，自动解锁时间一定要大于业务的执行时间，否则锁时间到了之后，不会自动续期
@@ -77,7 +84,7 @@ public class IndexController {
 
 
     /**
-     * 写数据加读写锁
+     * 写数据加读写锁测试
      * @return
      */
     @GetMapping("/write")
@@ -85,6 +92,7 @@ public class IndexController {
     public String writeValue() {
         RReadWriteLock lock = redisson.getReadWriteLock("rw-lock");
         String s = "";
+        //加写锁
         RLock rLock = lock.writeLock();
         try {
             rLock.lock();
@@ -100,7 +108,7 @@ public class IndexController {
     }
 
     /**
-     * 读数据加读写锁
+     * 读数据加读写锁测试
      * @return
      */
     @GetMapping("/read")
@@ -108,6 +116,7 @@ public class IndexController {
     public String readValue() {
         RReadWriteLock lock = redisson.getReadWriteLock("rw-lock");
         String s = "";
+        //加读锁
         RLock rLock = lock.readLock();
         try {
             rLock.lock();
@@ -119,6 +128,5 @@ public class IndexController {
         }
         return s;
     }
-
 
 }

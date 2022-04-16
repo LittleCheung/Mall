@@ -26,37 +26,49 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
         IPage<ProductAttrValueEntity> page = this.page(
                 new Query<ProductAttrValueEntity>().getPage(params),
                 new QueryWrapper<ProductAttrValueEntity>()
         );
-
         return new PageUtils(page);
     }
+
 
     @Override
     public void saveProductAttr(List<ProductAttrValueEntity> collect) {
         this.saveBatch(collect);
     }
 
+    /**
+     *获取spu商品的规格属性
+     * @param spuId
+     * @return
+     */
     @Override
     public List<ProductAttrValueEntity> baseAttrlistforspu(Long spuId) {
 
-        List<ProductAttrValueEntity> entities = this.baseMapper.selectList(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
+        List<ProductAttrValueEntity> entities = this.baseMapper.selectList(new QueryWrapper<ProductAttrValueEntity>()
+                .eq("spu_id", spuId));
         return entities;
     }
 
+    /**
+     * 更新spu商品属性
+     * @param spuId
+     * @param entities
+     */
     @Transactional
     @Override
     public void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> entities) {
-        // 1 删除这个spuId之前对应的所有属性
-        this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
 
+        //先删除这个spuId之前对应的所有属性
+        this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
+        //更新商品属性
         List<ProductAttrValueEntity> collect = entities.stream().map((item) -> {
             item.setSpuId(spuId);
             return item;
         }).collect(Collectors.toList());
         this.saveBatch(collect);
     }
-
 }

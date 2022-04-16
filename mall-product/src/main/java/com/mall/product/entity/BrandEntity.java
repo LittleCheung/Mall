@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.*;
 
 /**
- * 品牌信息实体类
+ * 品牌信息实体类（添加分组校验）
  *
  * @author littlecheung
  */

@@ -40,7 +40,7 @@ public class BrandController {
 
 
     /**
-     * 获取品牌信息
+     * 获取某一个品牌信息
      * @param brandId
      * @return
      */
@@ -52,7 +52,7 @@ public class BrandController {
     }
 
     /**
-     * 根据id获取品牌信息
+     * 获取全部品牌信息
      * @param brandIds
      * @return
      */

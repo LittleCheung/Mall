@@ -13,7 +13,7 @@ import com.mall.product.entity.SkuInfoEntity;
 
 
 /**
- * sku信息
+ * 处理sku信息请求
  * @author littlecheung
  */
 @RestController

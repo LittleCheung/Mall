@@ -154,10 +154,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
 
         //开启第一个异步任务
         CompletableFuture<Void> addressFuture = CompletableFuture.runAsync(() -> {
-
             //每一个线程都来共享之前的请求数据
             RequestContextHolder.setRequestAttributes(requestAttributes);
-
             //远程调用查询所有的收获地址列表
             List<MemberAddressVo> address = memberFeignService.getAddress(memberResponseVo.getId());
             confirmVo.setMemberAddressVos(address);
@@ -165,10 +163,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
 
         //开启第二个异步任务
         CompletableFuture<Void> cartInfoFuture = CompletableFuture.runAsync(() -> {
-
             //每一个线程都来共享之前的请求数据
             RequestContextHolder.setRequestAttributes(requestAttributes);
-
             //远程调用查询购物车所有选中的购物项
             List<OrderItemVo> currentCartItems = cartFeignService.getCurrentCartItems();
             confirmVo.setItems(currentCartItems);

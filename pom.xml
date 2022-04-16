@@ -24,6 +24,6 @@
         <module>mall-cart</module>
         <module>mall-seckill</module>
         <module>renren-generator</module>
+        <module>renren-fast</module>
     </modules>
-
 </project>

@@ -79,10 +79,9 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     @Override
     public List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId) {
 
-        // 1 查出分组信息
+        // 1 查出当前分组信息
         List<AttrGroupEntity> attrGroupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId));
-
-        // 2 查询所有属性
+        // 2 查询当前分组关联的所有属性
         List<AttrGroupWithAttrsVo> collect = attrGroupEntities.stream().map((group) -> {
             AttrGroupWithAttrsVo attrsVo = new AttrGroupWithAttrsVo();
             BeanUtils.copyProperties(group,attrsVo);
@@ -90,6 +89,7 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
             attrsVo.setAttrs(attrs);
             return  attrsVo;
         }).collect(Collectors.toList());
+
         List<AttrGroupWithAttrsVo> collect2 = collect.stream().filter((item) -> {
             if (item.getAttrs() == null) {
                 return true;
@@ -103,6 +103,7 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         }).collect(Collectors.toList());
         return collect2;
     }
+
 
     @Override
     public List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {

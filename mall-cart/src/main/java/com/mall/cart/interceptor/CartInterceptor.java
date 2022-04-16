@@ -58,12 +58,11 @@ public class CartInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        //如果没有临时用户自定义分配一个临时用户
+        //TODO 如果没有临时用户，自定义分配一个临时用户
         if (StringUtils.isEmpty(userInfoTo.getUserKey())) {
             String uuid = UUID.randomUUID().toString();
             userInfoTo.setUserKey(uuid);
         }
-        //目标方法执行之前
         toThreadLocal.set(userInfoTo);
         return true;
     }

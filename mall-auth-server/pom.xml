@@ -54,7 +54,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--整合spring session，将session存储到redis中-->
+        <!--整合spring session，将session存储到redis中解决分布式session共享问题-->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>

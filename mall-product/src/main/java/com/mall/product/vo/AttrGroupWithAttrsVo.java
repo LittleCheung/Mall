@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- *
+ * 分类分组以及属性实体
  * @author littlecheung
  */
 @Data
@@ -38,7 +38,8 @@ public class AttrGroupWithAttrsVo {
      * 所属分类id
      */
     private Long catelogId;
-
-
+    /**
+     * 分组属性
+     */
     private List<AttrEntity> attrs;
 }

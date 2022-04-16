@@ -47,9 +47,9 @@ public interface CategoryService extends IService<CategoryEntity> {
     void updateCasecade(CategoryEntity category);
 
 
-    List<CategoryEntity> getLevel1Categorys();
+    List<CategoryEntity> getLevelCategorys();
 
 
-    Map<String, List<Catelog2Vo>> getCatalogJson();
+    Map<String, List<Catelog2Vo>> getCatalogJson() throws InterruptedException;
 }
 

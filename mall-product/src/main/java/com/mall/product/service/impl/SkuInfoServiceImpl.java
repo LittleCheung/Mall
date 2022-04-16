@@ -59,6 +59,11 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     @Resource
     private SeckillFeignService seckillFeignService;
 
+    /**
+     * 简单分页查询
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<SkuInfoEntity> page = this.page(
@@ -69,15 +74,26 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         return new PageUtils(page);
     }
 
+    /**
+     * 保存sku信息
+     * @param skuInfoEntity
+     */
     @Override
     public void saveSkuInfo(SkuInfoEntity skuInfoEntity) {
+
         this.baseMapper.insert(skuInfoEntity);
     }
 
+    /**
+     * 条件分页查询sku信息
+     * @param params
+     * @return
+     */
     @Override
     public PageUtils queryPageByCondition(Map<String, Object> params) {
-        QueryWrapper<SkuInfoEntity> queryWrapper = new QueryWrapper<>();
 
+        QueryWrapper<SkuInfoEntity> queryWrapper = new QueryWrapper<>();
+        //模糊查询条件
         String key = (String) params.get("key");
         if (!StringUtils.isEmpty(key)) {
             queryWrapper.and((wrapper) ->{
@@ -93,14 +109,11 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         if (!StringUtils.isEmpty(brandId) && !"0".equalsIgnoreCase(catelogId)) {
             queryWrapper.eq("brand_id", brandId);
         }
-
         String min = (String) params.get("min");
         if (!StringUtils.isEmpty(min)) {
             queryWrapper.ge("price", min);
         }
-
         String max = (String) params.get("max");
-
         if (!StringUtils.isEmpty(max)) {
             try {
                 BigDecimal bigDecimal = new BigDecimal(max);
@@ -112,34 +125,42 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
             }
             queryWrapper.le("price", max);
         }
-
-
         IPage<SkuInfoEntity> page = this.page(new Query<SkuInfoEntity>().getPage(params),queryWrapper);
         return new PageUtils(page);
     }
 
-
+    /**
+     *
+     * @param spuId
+     * @return
+     */
     @Override
     public List<SkuInfoEntity> getSkusBySpuId(Long spuId) {
         List<SkuInfoEntity> list = this.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id",spuId));
         return list;
     }
 
+    /**
+     * 展示当前sku的详情
+     * @param skuId
+     * @return
+     */
     @Override
     public SkuItemVo item(Long skuId) {
+        //TODO CompletableFuture异步编排任务提交给线程池
         SkuItemVo skuItemVo = new SkuItemVo();
-        //sku基本信息获取 pms_sku_info
+        //获取sku基本信息
         CompletableFuture<SkuInfoEntity> infoFuture = CompletableFuture.supplyAsync(() -> {
             SkuInfoEntity info = getById(skuId);
             skuItemVo.setInfo(info);
             return info;
         }, executor);
-        //获取spu的销售属性组合
+        //获取spu的销售属性组合(接收infoFuture的结果)
         CompletableFuture<Void> saleAttrFuture = infoFuture.thenAcceptAsync((res) -> {
             List<SkuItemSaleAttrVo> saleAttrVos = skuSaleAttrValueService.getSaleAttrsBySpuId(res.getSpuId());
             skuItemVo.setSaleAttr(saleAttrVos);
         }, executor);
-        //获取spu的介绍 pms_spu_info_desc
+        //获取spu的介绍信息
         CompletableFuture<Void> descFuture = infoFuture.thenAcceptAsync(res -> {
             SpuInfoDescEntity spuInfoDescEntity = spuInfoDescService.getById(res.getSpuId());
             skuItemVo.setDesp(spuInfoDescEntity);
@@ -149,13 +170,13 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
             List<SpuItemAttrGroupVo> attrGroupVos = attrGroupService.getAttrGroupWithAttrsBySpuId(res.getSpuId(), res.getCatalogId());
             skuItemVo.setGroupAttrs(attrGroupVos);
         }, executor);
-        //获取sku图片信息 pms_sku_images
+
+        //获取sku图片信息
         CompletableFuture<Void> imgFuture = CompletableFuture.runAsync(() -> {
             List<SkuImagesEntity> skuImagesEntityList = imagesService.getImagesBySkuId(skuId);
             skuItemVo.setImages(skuImagesEntityList);
         }, executor);
-
-        //异步任务提交给线程池
+        //获取秒杀信息
         CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
             //TODO 远程调用服务查询当前sku是否参与秒杀优惠活动
             R skuSeckillInfo = seckillFeignService.getSkuSeckilInfo(skuId);
@@ -170,12 +191,10 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
                 }
             }
         }, executor);
-        //等待所有异步任务都完成后才返回
         try {
+            //TODO 等待所有异步任务都完成后才返回
             CompletableFuture.allOf(saleAttrFuture,descFuture,attrGroupFuture,imgFuture,seckillFuture).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
         return skuItemVo;

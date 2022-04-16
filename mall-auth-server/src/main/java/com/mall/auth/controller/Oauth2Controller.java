@@ -58,7 +58,7 @@ public class Oauth2Controller {
                 MemberRespVo memberRespVo = r.getData(new TypeReference<MemberRespVo>() {});
                 log.info("登录成功，用户信息：" + memberRespVo);
                 //TODO 1 默认发的令牌 session=唯一字符串,作用域只是当前域（解决子域与父域session共享问题）
-                //     解决办法：使用Spring Session整合Redis，在SessionConfig配置CookieSerializer放大作用域为赋予即可
+                //     解决办法：使用Spring Session整合Redis，在SessionConfig配置CookieSerializer放大作用域为父域即可
                 //TODO 2 之前每次都要实现Serializable序列化接口实现序列化（解决使用json的序列化方式来序列化对象数据到redis中的问题）
                 //     解决办法：在SessionConfig配置RedisSerializer即可实现json序列化方式
                 session.setAttribute(AuthServerConstant.SESSION_LOGIN_KEY,memberRespVo);

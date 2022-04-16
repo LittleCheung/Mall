@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- *
+ * 合并采购单实体
  * @author littlecheung
  */
 @Data
