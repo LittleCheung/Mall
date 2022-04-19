@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient
 @EnableFeignClients
 @MapperScan("com.mall.ware.dao")
-
 public class WareApplication {
 
     public static void main(String[] args) {
